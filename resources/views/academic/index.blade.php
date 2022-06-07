@@ -71,7 +71,7 @@
                 ],
                 columnDefs: [ {
                     className: 'not-export',
-                    "targets": [3, 4]
+                    "targets": [7, 8]
                 } ],
                 processing: true,
                 serverSide: true,
@@ -90,7 +90,7 @@
                         name: 'edit',
                         orderable: false,
                         searchable: false,
-                        render: function ( data) {
+                        render: function (data) {
                             return `<a class="btn btn-primary" href="${data}">Edit</a>`
                         }
                     },
