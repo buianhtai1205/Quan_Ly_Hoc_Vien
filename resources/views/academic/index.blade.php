@@ -4,20 +4,25 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 @section('content')
-<a class="btn btn-success" href="{{ route('academics.create') }}">Thêm giáo vụ</a>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<a class="btn btn-success" href="{{ route('academics.create') }}">Insert</a>
+<label class="btn btn-primary mb-0" for="csv">
+    Import CSV
+</label>
+<input type="file" id="csv" name="csv" class="d-none" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
 <br> <br>
 <table id="table-index" class="table table-striped dt-responsive">
     <thead>
         <tr>
             <th>#</th>
             <th>Email</th>
-            <th>Họ tên</th>
-            <th>Ngày sinh</th>
-            <th>Giới tính</th>
-            <th>Địa chỉ</th>
-            <th>Số điện thoại</th>
-            <th>Sửa</th>
-            <th>Xóa</th>
+            <th>FullName</th>
+            <th>BirthDate</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
 
@@ -28,7 +33,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/date-1.1.2/fc-4.0.2/fh-3.2.2/r-2.2.9/rg-1.1.4/sc-2.0.5/sb-1.3.2/sl-1.3.4/datatables.min.js"></script>
     <script>
-        $(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
             $('#table-index').DataTable({
                 dom: 'Blfrtip',
                 select: true,
@@ -104,6 +114,35 @@
             $("#select-name").change(function () {
                 table.column(1).search( this.value ).draw();
             } );
+            $("#csv").change(function(event) {
+                var formData = new FormData();
+                formData.append('file', $(this)[0].files[0]);
+                $.ajax({
+                    url: '{{ route('academics.import_csv') }}',
+                    type: 'POST',
+                    dataType: 'json',
+                    enctype: 'multipart/form-data',
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $.toast({
+                            heading: 'Well Done!',
+                            text: 'You successfully imported the CSV',
+                            position: 'bottom-right',
+                            showHideTransition: 'slide',
+                            icon: 'success',
+                            bgColor: '#OACF97',
+                            textColor: 'white',
+                        });
+                    },
+                    error: function (response) {
+
+                    },
+                });
+            });
         });
     </script>
 @endpush

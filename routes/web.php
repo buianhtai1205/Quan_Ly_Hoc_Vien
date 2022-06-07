@@ -19,5 +19,6 @@ Route::group(['prefix' => '/admin/academic', 'as' => 'academics.'], function() {
     Route::get('/edit/{academic}', [AcademicController::class, 'edit'])->name('edit');
     Route::put('/edit/{academic}', [AcademicController::class, 'update'])->name('update');
     Route::delete('/destroy/{academic}', [AcademicController::class, 'destroy'])->name('destroy');
+    Route::post('/import-csv', [AcademicController::class, 'importCsv'])->name('import_csv');
 });
 
