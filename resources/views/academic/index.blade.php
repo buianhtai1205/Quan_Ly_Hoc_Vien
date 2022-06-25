@@ -5,7 +5,7 @@
 @endpush
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<a class="btn btn-success" href="{{ route('academics.create') }}">Insert</a>
+<a class="btn btn-success" href="{{ route('admin.academics.create') }}">Insert</a>
 <label class="btn btn-primary mb-0" for="csv">
     Import CSV
 </label>
@@ -76,7 +76,7 @@
                 processing: true,
                 serverSide: true,
                 lengthMenu: [ 5, 10, 15, 20, 25 ],
-                ajax: '{!! route('academics.api') !!}',
+                ajax: '{!! route('admin.academics.api') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'email', name: 'email' },
@@ -118,7 +118,7 @@
                 var formData = new FormData();
                 formData.append('file', $(this)[0].files[0]);
                 $.ajax({
-                    url: '{{ route('academics.import_csv') }}',
+                    url: '{{ route('admin.academics.import_csv') }}',
                     type: 'POST',
                     dataType: 'json',
                     enctype: 'multipart/form-data',

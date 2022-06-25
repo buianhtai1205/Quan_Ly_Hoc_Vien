@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('content')
     <h4>Update</h4>
-    <form action="{{ route('academics.update', $academic) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.academics.update', $academic) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="form-row">

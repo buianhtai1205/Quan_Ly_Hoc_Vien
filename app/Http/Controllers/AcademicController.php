@@ -35,10 +35,10 @@ class AcademicController extends Controller
     {
         return Datatables::of(Academic::query())
             ->addColumn('edit', function ($object) {
-                return route('academics.edit', $object);
+                return route('admin.academics.edit', $object);
             })
             ->addColumn('delete', function ($object) {
-                return route('academics.destroy', $object);
+                return route('admin.academics.destroy', $object);
             })
             ->make(true);
     }

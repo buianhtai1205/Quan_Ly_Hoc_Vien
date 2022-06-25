@@ -4,7 +4,7 @@ use App\Http\Controllers\AcademicController;
 use App\Models\Academic;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin/academic/api', [AcademicController::class, 'api'])->name('academics.api');
+Route::get('/admin/academic/api', [AcademicController::class, 'api'])->name('admin.academics.api');
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,7 +12,7 @@ Route::get('/', function () {
 Route::get('/admin/', function () {
     return view('auth.login');
 });
-Route::group(['prefix' => '/admin/academic', 'as' => 'academics.'], function() {
+Route::group(['prefix' => '/admin/academic', 'as' => 'admin.academics.'], function() {
     Route::get('/', [AcademicController::class, 'index'])->name('index');
     Route::get('/create', [AcademicController::class, 'create'])->name('create');
     Route::post('/create', [AcademicController::class, 'store'])->name('store');

@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('content')
     <h4>Insert</h4>
-    <form action="{{ route('academics.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.academics.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-row">
             <div class="form-group col-md-4">
