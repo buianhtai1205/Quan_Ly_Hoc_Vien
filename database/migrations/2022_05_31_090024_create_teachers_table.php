@@ -21,6 +21,7 @@ class CreateTeachersTable extends Migration
             $table->enum('level', ["Master", "PhD", "Asscociate Professor", "Professor"]);
             $table->string('faculty', 100);
             $table->timestamps();
+            $table->softDeletes(); // add
         });
     }
 

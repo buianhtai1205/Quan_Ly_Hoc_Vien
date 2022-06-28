@@ -65,7 +65,7 @@ class AcademicController extends Controller
         $array['avatar'] = $path;
         Academic::create($array);
 
-        return redirect()->route('academics.index')->with('success', 'Inserted successfull!');
+        return redirect()->route('admin.academics.index')->with('success', 'Inserted successfull!');
     }
 
 
@@ -86,12 +86,12 @@ class AcademicController extends Controller
     public function update(UpdateAcademicRequest $request, Academic $academic)
     {
         $academic->update($request->validated());
-        return redirect()->route('academics.index')->with('success', 'Updated successfull!');
+        return redirect()->route('admin.academics.index')->with('success', 'Updated successfull!');
     }
 
     public function destroy(Academic $academic)
     {
         $academic->delete();
-        return redirect()->route('academics.index')->with('success', 'Deleted successfull!');
+        return redirect()->route('admin.academics.index')->with('success', 'Deleted successfull!');
     }
 }

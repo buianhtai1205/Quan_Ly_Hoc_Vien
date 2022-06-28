@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\AcademicController;
-use App\Models\Academic;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/academic/api', [AcademicController::class, 'api'])->name('admin.academics.api');
+Route::get('/admin/teacher/api', [TeacherController::class, 'api'])->name('admin.teachers.api');
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,3 +23,11 @@ Route::group(['prefix' => '/admin/academic', 'as' => 'admin.academics.'], functi
     Route::post('/import-csv', [AcademicController::class, 'importCsv'])->name('import_csv');
 });
 
+Route::group(['prefix' => '/admin/teacher', 'as' => 'admin.teachers.'], function() {
+    Route::get('/', [TeacherController::class, 'index'])->name('index');
+    Route::get('/create', [TeacherController::class, 'create'])->name('create');
+    Route::post('/create', [TeacherController::class, 'store'])->name('store');
+    Route::get('/edit/{teacher}', [TeacherController::class, 'edit'])->name('edit');
+    Route::put('/edit/{teacher}', [TeacherController::class, 'update'])->name('update');
+    Route::delete('/destroy/{teacher}', [TeacherController::class, 'destroy'])->name('destroy');
+});
