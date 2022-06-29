@@ -13,18 +13,26 @@ class UpdateCourseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            //
+            "courseID" => [
+                'required',
+                'string',
+            ],
+            "courseName" => [
+                'string',
+                'required',
+            ],
+            "beginYear" => [
+                'required',
+            ],
+            "endYear" => [
+                'required',
+            ],
         ];
     }
 }
