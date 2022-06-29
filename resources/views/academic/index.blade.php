@@ -78,7 +78,7 @@
                 lengthMenu: [ 5, 10, 15, 20, 25 ],
                 ajax: '{!! route('admin.academics.api') !!}',
                 columns: [
-                    { data: 'id', name: 'id' },
+                    { data: 'id', name: 'id'},
                     { data: 'academicID', name: 'academicID' },
                     { data: 'fullName', name: 'fullName' },
                     { data: 'birthDate', name: 'birthDate' },
