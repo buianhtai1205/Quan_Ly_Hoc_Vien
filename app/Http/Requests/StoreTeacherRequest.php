@@ -13,7 +13,7 @@ class StoreTeacherRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,35 @@ class StoreTeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'fullName' => [
+                'required',
+                'string',
+            ],
+            'gender' => [
+                'required',
+            ],
+            'birthDate' => [
+                'required',
+                'date',
+                'before:today',
+            ],
+            'avatar' => [
+                'nullable',
+                'file',
+                'image',
+            ],
+            'teacherID' => [
+                'required',
+            ],
+            'password' => [
+                'required',
+            ],
+            'address' => [
+                'required',
+            ],
+            'phoneNumber' => [
+                'required',
+            ]
         ];
     }
 }

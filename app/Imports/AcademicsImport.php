@@ -25,7 +25,7 @@ class AcademicsImport implements ToModel, WithCustomCsvSettings, WithStartRow
     public function model(array $row): Academic
     {
         return new Academic([
-            'email' => $row[1] . "@j2school.edu.vn",
+            'academicID' => $row[1],
             'password' => $row[2],
             'fullName' => $row[3],
             'gender' => $row[4],

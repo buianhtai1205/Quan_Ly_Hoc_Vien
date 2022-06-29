@@ -20,8 +20,8 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="example-email">Email</label>
-                <input type="email" id="example-email" name="email" value="{{ $teacher->email }}" class="form-control" placeholder="Email">
+                <label for="example">TeacherID</label>
+                <input type="text" id="example" name="teacherID" value="{{ $teacher->teacherID }}" class="form-control" placeholder="teacherID">
             </div>
             <div class="form-group col-md-4">
                 <label for="password">Password</label>

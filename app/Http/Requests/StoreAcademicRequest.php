@@ -31,7 +31,7 @@ class StoreAcademicRequest extends FormRequest
                 'file',
                 'image',
             ],
-            'email' => [
+            'academicID' => [
                 'required',
             ],
             'password' => [

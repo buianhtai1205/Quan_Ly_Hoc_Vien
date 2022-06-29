@@ -12,6 +12,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Academic::factory(10)->create();
-        Teacher::factory(100)->create();
+        Teacher::factory(50)->create();
     }
 }

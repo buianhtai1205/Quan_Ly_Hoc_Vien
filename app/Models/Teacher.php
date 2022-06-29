@@ -13,7 +13,7 @@ class Teacher extends Model
     use Notifiable,
         SoftDeletes;// add soft delete
     protected $fillable = [
-        'email',
+        'teacherID',
         'password',
         'fullName',
         'birthDate',

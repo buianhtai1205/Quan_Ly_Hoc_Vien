@@ -15,7 +15,7 @@ class Academic extends Model
     use Notifiable,
         SoftDeletes;// add soft delete
     protected $fillable = [
-        'email',
+        'academicID',
         'password',
         'fullName',
         'birthDate',

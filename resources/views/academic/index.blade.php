@@ -15,7 +15,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Email</th>
+            <th>AcademicID</th>
             <th>FullName</th>
             <th>BirthDate</th>
             <th>Gender</th>
@@ -79,7 +79,7 @@
                 ajax: '{!! route('admin.academics.api') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'email', name: 'email' },
+                    { data: 'academicID', name: 'academicID' },
                     { data: 'fullName', name: 'fullName' },
                     { data: 'birthDate', name: 'birthDate' },
                     { data: 'gender', name: 'gender' },

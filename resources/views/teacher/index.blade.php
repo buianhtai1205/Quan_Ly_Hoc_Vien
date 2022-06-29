@@ -15,7 +15,6 @@
         <thead>
         <tr>
             <th>#</th>
-{{--            <th>Email</th>--}}
             <th>FullName</th>
             <th>BirthDate</th>
             <th>Gender</th>
@@ -81,7 +80,6 @@
                 ajax: '{!! route('admin.teachers.api') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
-                    // { data: 'email', name: 'email' },
                     { data: 'fullName', name: 'fullName' },
                     { data: 'birthDate', name: 'birthDate' },
                     { data: 'gender', name: 'gender' },

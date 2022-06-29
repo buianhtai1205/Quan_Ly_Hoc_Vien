@@ -15,7 +15,7 @@ class CreateAcademicsTable extends Migration
     {
         Schema::create('academics', function (Blueprint $table) {
             $table->id();
-            $table->string('email', 50);
+            $table->string('academicID', 50);
             $table->string('password', 200);
             $table->string('fullName', 100);
             $table->Date('birthDate');
