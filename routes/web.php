@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcademicController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\FacultyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/academic/api', [AcademicController::class, 'api'])->name('admin.academics.api');
@@ -40,4 +41,13 @@ Route::group(['prefix' => '/admin/course', 'as' => 'admin.courses.'], function()
     Route::get('/edit/{course}', [CourseController::class, 'edit'])->name('edit');
     Route::put('/edit/{course}', [CourseController::class, 'update'])->name('update');
     Route::delete('/destroy/{course}', [CourseController::class, 'destroy'])->name('destroy');
+});
+
+Route::group(['prefix' => '/admin/faculty', 'as' => 'admin.faculties.'], function() {
+    Route::get('/', [FacultyController::class, 'index'])->name('index');
+    Route::get('/create', [FacultyController::class, 'create'])->name('create');
+    Route::post('/create', [FacultyController::class, 'store'])->name('store');
+    Route::get('/edit/{faculty}', [FacultyController::class, 'edit'])->name('edit');
+    Route::put('/edit/{faculty}', [FacultyController::class, 'update'])->name('update');
+    Route::delete('/destroy/{faculty}', [FacultyController::class, 'destroy'])->name('destroy');
 });
