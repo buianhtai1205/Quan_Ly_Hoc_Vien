@@ -15,7 +15,14 @@ class CreateStudentclassesTable extends Migration
     {
         Schema::create('studentclasses', function (Blueprint $table) {
             $table->id();
+            $table->string('classID')->unique()->nullable(false);
+            $table->string('courseID');
+            $table->string('facultyID');
+            $table->string('className', 50);
             $table->timestamps();
+            $table->softDeletes(); // add
+            $table->foreign('courseID')->references('courseID')->on('courses')->onDelete('cascade');
+            $table->foreign('facultyID')->references('facultyID')->on('faculties')->onDelete('cascade');
         });
     }
 

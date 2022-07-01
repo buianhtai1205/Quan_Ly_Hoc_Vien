@@ -13,7 +13,7 @@ class StoreStudentclassRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class StoreStudentclassRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'classID' => [
+                'required',
+                'unique:App\Models\Studentclass',
+            ],
+            'courseID' => [
+                'required',
+            ],
+            'facultyID' => [
+                'required',
+            ],
+            'className' => [
+                'required',
+            ]
         ];
     }
 }

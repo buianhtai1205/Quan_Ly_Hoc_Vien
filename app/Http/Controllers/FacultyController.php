@@ -20,6 +20,7 @@ class FacultyController extends Controller
         $title = implode(' / ', $arr);
         View::share('title', $title);
     }
+
     public function index()
     {
         $faculties = $this->model->all();
@@ -38,7 +39,7 @@ class FacultyController extends Controller
     public function store(StoreFacultyRequest $request)
     {
         $this->model->create($request->validated());
-        return redirect()->route('admin.faculties.index')->with('success', 'Inserted successfull!');
+        return redirect()->route('admin.faculties.index')->with('success', 'Inserted successful!');
     }
 
     public function show(Faculty $faculty)
@@ -58,12 +59,12 @@ class FacultyController extends Controller
     public function update(UpdateFacultyRequest $request, Faculty $faculty)
     {
         $faculty->update($request->validated());
-        return redirect()->route('admin.faculties.index')->with('success', 'Updated successfull!');
+        return redirect()->route('admin.faculties.index')->with('success', 'Updated successful!');
     }
 
     public function destroy(Faculty $faculty)
     {
         $faculty->delete();
-        return redirect()->route('admin.faculties.index')->with('success', 'Deleted successfull!');
+        return redirect()->route('admin.faculties.index')->with('success', 'Deleted successful!');
     }
 }

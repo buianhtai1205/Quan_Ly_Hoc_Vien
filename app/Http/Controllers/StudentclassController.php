@@ -2,85 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Faculty;
 use App\Models\Studentclass;
 use App\Http\Requests\StoreStudentclassRequest;
 use App\Http\Requests\UpdateStudentclassRequest;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 class StudentclassController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $model;
+    public function __construct()
+    {
+        $this->model = new Studentclass();
+        $routeName = Route::currentRouteName();
+        $arr = explode('.', $routeName);
+        $arr = array_map('ucfirst', $arr);
+        $title = implode(' / ', $arr);
+        View::share('title', $title);
+    }
+
     public function index()
     {
-        //
+        $studentClasses = $this->model->all();
+        return view('studentClass.index', [
+            'studentClasses' => $studentClasses,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $courses = Course::all();
+        $faculties = Faculty::all();
+        return view('studentClass.create', [
+            'courses' => $courses,
+            'faculties' => $faculties,
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreStudentclassRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(StoreStudentclassRequest $request)
     {
-        //
+        $this->model->create($request->validated());
+        return redirect()->route('admin.studentClasses.index')->with('success', 'Inserted successful!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Studentclass  $studentclass
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Studentclass $studentclass)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Studentclass  $studentclass
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Studentclass $studentclass)
+
+    public function edit(Studentclass $studentClass)
     {
-        //
+        $courses = Course::all();
+        $faculties = Faculty::all();
+        return view('studentClass.edit', [
+            'studentClass' => $studentClass,
+            'courses' => $courses,
+            'faculties' => $faculties,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateStudentclassRequest  $request
-     * @param  \App\Models\Studentclass  $studentclass
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateStudentclassRequest $request, Studentclass $studentclass)
+
+    public function update(UpdateStudentclassRequest $request, Studentclass $studentClass)
     {
-        //
+        $studentClass->update($request->validated());
+        return redirect()->route('admin.studentClasses.index')->with('success', 'Updated successful!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Studentclass  $studentclass
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Studentclass $studentclass)
+
+    public function destroy(Studentclass $studentClass)
     {
-        //
+        $studentClass->delete();
+        return redirect()->route('admin.studentClasses.index')->with('success', 'Deleted successful!');
     }
 }
