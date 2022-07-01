@@ -13,7 +13,7 @@ class StoreStudentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,37 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'classID' => [
+
+            ],
+            'studentID' => [
+              'required',
+              'string',
+              'unique:App\Models\Student',
+            ],
+            'password' => [
+                'required',
+                'min:6',
+            ],
+            'fullName' => [
+                'required'
+            ],
+            'birthDate' => [
+                'required',
+                'date',
+                'before:today',
+            ],
+            'avatar' => [
+                'nullable',
+                'file',
+                'image',
+            ],
+            'address' => [
+                'required',
+            ],
+            'phoneNumber' => [
+                'required',
+            ]
         ];
     }
 }
