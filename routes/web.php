@@ -72,3 +72,4 @@ Route::group(['prefix' => '/admin/student', 'as' => 'admin.students.'], function
     Route::put('/edit/{student}', [StudentController::class, 'update'])->name('update');
     Route::delete('/destroy/{student}', [StudentController::class, 'destroy'])->name('destroy');
 });
+
