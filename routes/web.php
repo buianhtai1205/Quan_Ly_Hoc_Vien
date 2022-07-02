@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\StudentclassController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/academic/api', [AcademicController::class, 'api'])->name('admin.academics.api');
@@ -73,3 +74,11 @@ Route::group(['prefix' => '/admin/student', 'as' => 'admin.students.'], function
     Route::delete('/destroy/{student}', [StudentController::class, 'destroy'])->name('destroy');
 });
 
+Route::group(['prefix' => '/admin/subject', 'as' => 'admin.subjects.'], function() {
+    Route::get('/', [SubjectController::class, 'index'])->name('index');
+    Route::get('/create', [SubjectController::class, 'create'])->name('create');
+    Route::post('/create', [SubjectController::class, 'store'])->name('store');
+    Route::get('/edit/{subject}', [SubjectController::class, 'edit'])->name('edit');
+    Route::put('/edit/{subject}', [SubjectController::class, 'update'])->name('update');
+    Route::delete('/destroy/{subject}', [SubjectController::class, 'destroy'])->name('destroy');
+});
