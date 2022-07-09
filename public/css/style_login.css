@@ -1,0 +1,209 @@
+/* Reset Css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    outline: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* End Reset  */
+
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    background-color: #ecf0f3;
+}
+
+.login-div {
+    width: 430px;
+    height: 650px;
+    padding: 35px;
+    border-radius: 40px;
+    background-color: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+    -13px -13px 20px #fff;
+}
+
+.title {
+    text-align: center;
+    font-size: 28px;
+    padding-top: 24px;
+    letter-spacing: 0.5px;
+    color: #000;
+}
+
+.sub-title {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 8px;
+    letter-spacing: 2px;
+}
+
+.fields {
+    width: 100%;
+    padding: 30px 5px 5px 5px;
+}
+
+.fields input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 16px;
+    color: #555;
+    display: block;
+    padding: 20px 10px 20px 5px;
+}
+
+.username,
+.password {
+    margin-bottom: 30px;
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1,
+    inset -8px -8px 8px #fff;
+    display: flex;
+}
+
+.fields i {
+    font-size: 16px;
+    margin: 0 10px -3px 25px;
+    line-height: 66px;
+}
+
+.login-btn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-family: "Lato", sans-serif;
+    color: #fff;
+    text-align: center;
+    background-color: #02c8db;
+    box-shadow: 3px 3px 8px #b1b1b1,
+    -3px -3px 8px #fff;
+    transition: all 0.5s;
+}
+
+.login-btn:hover {
+    background-color: #49ee67;
+}
+
+
+.form-line{
+    margin-bottom: 40px;
+}
+
+.form-line label{
+    margin: 0px 8px;
+    font-size: 16px;
+    width: 52px;
+    display: block;
+    box-shadow: 3px 3px 8px #b1b1b1,
+    -3px -3px 8px #fff;
+    border-radius: 30px;
+}
+
+.radio-button-group{
+    display: flex;
+}
+
+.radio-button-group input[type=radio]{
+    display: none;
+}
+
+.radio-button-group input[type=radio] + label{
+    flex: 1;
+    display: block;
+    height: 38px;
+    padding: 0 12px;
+    background-color: #e7e7e7;
+    border-color: #ddd;
+
+    text-align: center;
+    line-height: 38px;
+
+    cursor: pointer;
+}
+
+.radio-button-group input[type=radio]:checked + label{
+    background-color: #00e676;
+    color: #fff;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.form-check input {
+    margin: 0px 12px;
+}
+
+.form-check label {
+    font-size: 14px;
+}
+
+.forgot-pass {
+    width: 50%;
+    margin-bottom: 16px;
+}
+.forgot-pass a {
+    text-decoration: none;
+    font-size: 14px;
+    color: rgb(245, 9, 9);
+}
+
+.forgot-pass .fa-hand-point-right {
+    color: rgb(245, 9, 9);
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    margin: 0 12px;
+}

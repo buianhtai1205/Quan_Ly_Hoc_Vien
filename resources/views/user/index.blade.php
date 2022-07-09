@@ -40,8 +40,9 @@
                         sed sagittis at, sagittis quis neque. Praesent.</p>
 
                     <div class="row vbh">
-
-                        <div class="btn btn-success animated bounceInUp"> Login </div>
+                        <a class="nav-btn" href="{{ route('users.login') }}">
+                            <button class="btn btn-success animated bounceInUp"> Login </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -56,8 +57,9 @@
                         sed sagittis at, sagittis quis neque. Praesent.</p>
 
                     <div class="row vbh">
-
-                        <div class="btn btn-success animated bounceInUp"> Login </div>
+                        <a class="nav-btn" href="{{ route('users.login') }}">
+                            <button class="btn btn-success animated bounceInUp"> Login </button>
+                        </a>
                     </div>
                 </div>
             </div>

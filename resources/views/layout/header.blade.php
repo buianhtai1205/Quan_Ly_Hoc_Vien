@@ -72,8 +72,8 @@
 
 
                             </ul>
-                            <a class="nav-btn" href="">
-                                <button class="btn btn-success">Login</button>
+                            <a class="nav-btn" href="{{ route('users.login') }}">
+                                <button id="btn-login" class="btn btn-success">Login</button>
                             </a>
                         </div>
                     </nav>
