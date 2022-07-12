@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+    <script src="https://kit.fontawesome.com/c0564c5ed5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,10 +23,15 @@
 @include('layout.header')
 <!-- ################# Header Ends Here#######################--->
 
-<!-- ################# Sidebar Starts Here#######################--->
-@include('layout.sidebar')
-<!-- ################# Sidebar Ends Here#######################--->
+<div class="container-home">
+    <!-- ################# Sidebar Starts Here#######################--->
+    @include('layout.sidebar')
+    <!-- ################# Sidebar Ends Here#######################--->
 
+    <div class="content">
+
+    </div>
+</div>
 
 <!-- ################# Footer Starts Here#######################--->
 @include('layout.footer')
