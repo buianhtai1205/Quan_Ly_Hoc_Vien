@@ -6,7 +6,7 @@
 @section('content')
     {{--  Title  --}}
     <div class="content-title">
-        <i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Teacher
+        <i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student
     </div>
 
     {{--  Message  --}}
@@ -27,8 +27,19 @@
 
     {{--  Content  --}}
     <div class="content-main">
+        <div class="form-group">
+            <label><strong>Course :</strong></label>
+            <select id='course' class="form-control" style="width: 200px;">
+                <option value="">--Select Course--</option>
+                @foreach ($courses as $course)
+                    <option value="{{ $course->courseID }}">{{ $course->courseName }}</option>
+                @endforeach
+            </select>
+        </div>
+
+
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <a class="btn btn-success" href="{{ route('manage_teachers.create') }}">Insert</a>
+        <a class="btn btn-success" href="{{ route('manage_students.create') }}">Insert</a>
         <label class="btn btn-primary mb-0" for="csv">
             Import CSV
         </label>
@@ -38,14 +49,12 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>TeacherID</th>
+                <th>StudentID</th>
                 <th>FullName</th>
                 <th>BirthDate</th>
                 <th>Gender</th>
                 <th>Address</th>
                 <th>Phone</th>
-                <th>Level</th>
-                <th>Faculty</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -53,7 +62,6 @@
 
         </table>
     </div>
-
 
 @endsection
 @push('js')
@@ -100,22 +108,25 @@
                 ],
                 columnDefs: [ {
                     className: 'not-export',
-                    "targets": [8, 9]
+                    "targets": [7, 8]
                 } ],
                 processing: true,
                 serverSide: true,
                 lengthMenu: [ 5, 10, 15, 20, 25 ],
-                ajax: '{!! route('manage_teachers.api') !!}',
+                ajax: {
+                    url: "{{ route('manage_students.api') }}",
+                    data: function (d) {
+                        d.course = $('#course').val();
+                    }
+                },
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'teacherID', name: 'teacherID' },
+                    { data: 'studentID', name: 'studentID'},
                     { data: 'fullName', name: 'fullName' },
                     { data: 'birthDate', name: 'birthDate' },
                     { data: 'gender', name: 'gender' },
                     { data: 'address', name: 'address' },
                     { data: 'phoneNumber', name: 'phoneNumber' },
-                    { data: 'level', name: 'level' },
-                    { data: 'faculty', name: 'faculty' },
                     {
                         data: 'edit',
                         name: 'edit',
@@ -145,11 +156,14 @@
             $("#select-name").change(function () {
                 table.column(1).search( this.value ).draw();
             } );
+            $('#course').change(function(){
+                $('#table-index').DataTable().ajax.reload();
+            });
             $("#csv").change(function(event) {
                 var formData = new FormData();
                 formData.append('file', $(this)[0].files[0]);
                 $.ajax({
-                    url: '{{ route('manage_teachers.import_csv') }}',
+                    url: '{{ route('manage_students.import_csv') }}',
                     type: 'POST',
                     dataType: 'json',
                     enctype: 'multipart/form-data',

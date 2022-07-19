@@ -48,13 +48,13 @@
                 <a href="{{ route('manage_teachers.index') }}" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Mannage Teacher</a>
             </li>
             <li class="">
-                <a href="#" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Course</a>
+                <a href="{{ route('manage_courses.index') }}" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Course</a>
             </li>
             <li class="">
-                <a href="#" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student Class</a>
+                <a href="{{ route('manage_student_classes.index') }}" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student Class</a>
             </li>
             <li class="">
-                <a href="#" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student</a>
+                <a href="{{ route('manage_students.index') }}" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student</a>
             </li>
         </ul>
         <a class="side-nav-feat" href="#"><i class="fa-solid fa-compass icon-sidebar"></i>Divide Class Student</a>

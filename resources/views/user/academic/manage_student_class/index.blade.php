@@ -2,7 +2,7 @@
 @section('content')
     {{--  Title  --}}
     <div class="content-title">
-        <i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Course
+        <i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student Class
     </div>
 
     {{--  Message  --}}
@@ -24,33 +24,33 @@
     {{--  Content  --}}
     <div class="content-main">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <a class="btn btn-success" href="{{ route('manage_courses.create') }}">Insert</a>
+        <a class="btn btn-success" href="{{ route('manage_student_classes.create') }}">Insert</a>
         <br> <br>
         <table id="table-index" class="table table-striped dt-responsive">
             <thead>
             <tr>
                 <th>#</th>
                 <th>CourseID</th>
-                <th>CourseName</th>
-                <th>BeginYear</th>
-                <th>EndYear</th>
+                <th>FacultyID</th>
+                <th>ClassID</th>
+                <th>ClassName</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             </thead>
-            @foreach($courses as $course)
+            @foreach($studentClasses as $studentClass)
                 <thead>
                 <tr>
-                    <th>{{ $course->id }}</th>
-                    <th>{{ $course->courseID }}</th>
-                    <th>{{ $course->courseName }}</th>
-                    <th>{{ $course->beginYear }}</th>
-                    <th>{{ $course->endYear }}</th>
+                    <th>{{ $studentClass->id }}</th>
+                    <th>{{ $studentClass->courseID }}</th>
+                    <th>{{ $studentClass->facultyID }}</th>
+                    <th>{{ $studentClass->classID }}</th>
+                    <th>{{ $studentClass->className }}</th>
                     <th>
-                        <a class="btn btn-primary" href="{{ route('manage_courses.edit', $course->id) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('manage_student_classes.edit', $studentClass->id) }}">Edit</a>
                     </th>
                     <th>
-                        <form action="{{ route('manage_courses.destroy', $course->id) }}" method="post">
+                        <form action="{{ route('manage_student_classes.destroy', $studentClass->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">Delete</button>
@@ -61,4 +61,5 @@
             @endforeach
         </table>
     </div>
+
 @endsection

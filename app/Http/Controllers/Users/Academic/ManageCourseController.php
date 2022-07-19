@@ -25,7 +25,7 @@ class ManageCourseController extends Controller
     public function index()
     {
         $courses = $this->model->all();
-        return view('course.index', [
+        return view('user.academic.manage_course.index', [
             'courses' => $courses,
         ]);
     }
@@ -33,14 +33,14 @@ class ManageCourseController extends Controller
 
     public function create()
     {
-        return view('course.create');
+        return view('user.academic.manage_course.create');
     }
 
     public function store(StoreCourseRequest $request)
     {
         $this->model->create($request->validated());
         return redirect()
-            ->route('admin.courses.index')
+            ->route('manage_courses.index')
             ->with('success', 'Inserted successfull!');
     }
 
@@ -53,7 +53,7 @@ class ManageCourseController extends Controller
 
     public function edit(Course $course)
     {
-        return view('course.edit', [
+        return view('user.academic.manage_course.edit', [
             'course' => $course,
         ]);
     }
@@ -63,7 +63,7 @@ class ManageCourseController extends Controller
     {
         $course->update($request->validated());
         return redirect()
-            ->route('admin.courses.index')
+            ->route('manage_courses.index')
             ->with('success', 'Updated successfull!');
     }
 
@@ -72,7 +72,7 @@ class ManageCourseController extends Controller
     {
         $course->delete();
         return redirect()
-            ->route('admin.courses.index')
+            ->route('manage_courses.index')
             ->with('success', 'Deleted successfull!');
     }
 }

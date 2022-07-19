@@ -2,7 +2,7 @@
 @section('content')
     {{--  Title  --}}
     <div class="content-title">
-        <i class="fa-solid fa-angles-right icon-sidebar"></i>Mannage Teacher / Update
+        <i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Teacher / Update
     </div>
 
     {{--  Message  --}}
