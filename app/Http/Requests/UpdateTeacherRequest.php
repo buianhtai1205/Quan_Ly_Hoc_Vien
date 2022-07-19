@@ -41,9 +41,6 @@ class UpdateTeacherRequest extends FormRequest
                 'file',
                 'image',
             ],
-            'email' => [
-                'required',
-            ],
             'password' => [
                 'required',
             ],
@@ -51,6 +48,9 @@ class UpdateTeacherRequest extends FormRequest
                 'required',
             ],
             'phoneNumber' => [
+                'required',
+            ],
+            'faculty' => [
                 'required',
             ]
         ];

@@ -40,11 +40,26 @@
     </div>
 
     <nav class="sidebar-nav">
-        <a href=""><i class="fa-solid fa-house-chimney icon-sidebar"></i>Home</a>
-        <a href=""><i class="fa-solid fa-user icon-sidebar"></i>Portfolio</a>
-        <a href=""><i class="fa-solid fa-compass icon-sidebar"></i>Divide Class Student</a>
-        <a href=""><i class="fa-solid fa-compass icon-sidebar"></i>Teaching Assignment</a>
-        <a href=""><i class="fa-solid fa-right-from-bracket icon-sidebar"></i>Logout</a>
+        <a class="side-nav-feat" href="#"><i class="fa-solid fa-house-chimney icon-sidebar"></i>Home</a>
+        <a class="side-nav-feat" href="#"><i class="fa-solid fa-user icon-sidebar"></i>Portfolio</a>
+        <a id="feat-first-level" class="side-nav-feat" href="#" ><i class="fa-solid fa-compass icon-sidebar"></i>General Management</a>
+        <ul id="feat-second-level" class="side-nav-second-level element-hidden" >
+            <li class="">
+                <a href="{{ route('manage_teachers.index') }}" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Mannage Teacher</a>
+            </li>
+            <li class="">
+                <a href="#" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Course</a>
+            </li>
+            <li class="">
+                <a href="#" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student Class</a>
+            </li>
+            <li class="">
+                <a href="#" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student</a>
+            </li>
+        </ul>
+        <a class="side-nav-feat" href="#"><i class="fa-solid fa-compass icon-sidebar"></i>Divide Class Student</a>
+        <a class="side-nav-feat" href="#"><i class="fa-solid fa-compass icon-sidebar"></i>Teaching Assignment</a>
+        <a class="side-nav-feat" href="#"><i class="fa-solid fa-right-from-bracket icon-sidebar"></i>Logout</a>
     </nav>
 
 </div>
@@ -79,4 +94,17 @@
             document.body.classList.remove('active');
         }
     }
+
+    let feat_first_level = document.getElementById('feat-first-level');
+    let feat_second_level = document.getElementById('feat-second-level');
+
+    feat_first_level.onclick = () => {
+        if (feat_second_level.classList.contains('element-hidden')) {
+            feat_second_level.classList.remove('element-hidden');
+        } else {
+            feat_second_level.classList.add('element-hidden');
+        }
+
+    }
+
 </script>

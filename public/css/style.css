@@ -623,3 +623,52 @@ footer {
     border-right: 0px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+/* Content CSS */
+.content .content-title {
+    display: block;
+    margin: 16px 88px 16px 16px;
+    padding: 8px;
+    border-radius: 20px;
+    font-size: 17px;
+    box-shadow: var(--box-shadow);
+    color: var(--black);
+    text-align: left;
+    font-weight: bold;
+}
+
+.content .content-title .icon-sidebar {
+    display: inline-block;
+    font-size: 18px;
+    color: var(--green);
+    margin: 0 16px;
+}
+
+.content .content-main {
+    margin: 0 24px;
+    border-radius: 3px;
+    color: var(--black)!important;
+}
+
+.dt-buttons button {
+    display: block;
+    padding: 8px;
+    border: none!important;
+    border-radius: 5px!important;
+    font-size: 17px;
+    box-shadow: var(--box-shadow);
+    color: var(--black)!important;
+    background-color: var(--bg-color)!important;
+    margin: 0 8px!important;
+}
+
+.dt-buttons button:hover {
+    background-color: var(--green)!important;
+}
+
+.content-main .btn {
+    border-radius: 5px !important;
+    margin: 0 8px!important;
+}
+
+

@@ -52,6 +52,9 @@ class StoreTeacherRequest extends FormRequest
             ],
             'phoneNumber' => [
                 'required',
+            ],
+            'faculty' => [
+                'required',
             ]
         ];
     }

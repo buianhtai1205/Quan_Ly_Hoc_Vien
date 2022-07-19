@@ -1,39 +1,39 @@
 <header class="continer-fluid ">
-    <div class="header-top">
-        <div class="container">
-            <div class="row col-det">
-                <div class="col-lg-6 d-none d-lg-block">
-                    <ul class="ulleft">
-                        <li>
-                            <i class="far fa-envelope"></i>
-                            buianhtaidev.proton.me
-                            <span>|</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-volume"></i>
-                            +84 9 33 99 ** **
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <ul class="ulright">
-                        <li>
-                            <i class="fab fa-facebook-square"></i>
-                        </li>
-                        <li>
-                            <i class="fab fa-twitter-square"></i>
-                        </li>
-                        <li>
-                            <i class="fab fa-instagram"></i>
-                        </li>
-                        <li>
-                            <i class="fab fa-linkedin"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="header-top">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row col-det">--}}
+{{--                <div class="col-lg-6 d-none d-lg-block">--}}
+{{--                    <ul class="ulleft">--}}
+{{--                        <li>--}}
+{{--                            <i class="far fa-envelope"></i>--}}
+{{--                            buianhtaidev.proton.me--}}
+{{--                            <span>|</span>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <i class="fas fa-phone-volume"></i>--}}
+{{--                            +84 9 33 99 ** **--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-6 col-md-12">--}}
+{{--                    <ul class="ulright">--}}
+{{--                        <li>--}}
+{{--                            <i class="fab fa-facebook-square"></i>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <i class="fab fa-twitter-square"></i>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <i class="fab fa-instagram"></i>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <i class="fab fa-linkedin"></i>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div id="menu-jk" class="header-bottom">
         <div class="container">
             <div class="row nav-row">

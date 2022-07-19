@@ -2,18 +2,23 @@
 :root{
     --green:#27ae60;
     --black: #000;
-    --bg-color:#e6e6e6;
+    /*--bg-color:#e6e6e6;*/
+    --bg-color:#ecf0f3;
     --border: 2px solid rgba(0,0,0,.2);
-    --box-shadow: 8px 8px 16px #ccc,
-                -8px -8px 16px #fff;
-    --box-shadow-inset:8px 8px 16px #ccc inset,
-                -8px -8px 16px #fff inset;
+    --box-shadow: 4px 4px 6px #8c8c8c,
+                -4px -4px 6px #fff;
+    --box-shadow-inset:4px 4px 6px #8c8c8c inset,
+                -4px -4px 6px #fff inset;
 }
 
 html{
     font-size: 16px;
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+.element-hidden {
+    display: none;
 }
 
 body.active{
@@ -34,20 +39,23 @@ header {
 .container-home {
     display:flex;
     width: 100%;
-    background-color: var(--bg-color)!important;
+    background-color: var(--bg-color);
 }
 
 .container-home .content {
-    height: 1000px;
+    width: 80%;
+    margin-bottom: 64px;
+    /*background-color: #fff;*/
 }
 
 .sidebar {
     background: var(--bg-color);
-    width: 300px;
+    width: 300px!important;
     border-right: var(--border);
     padding: 2rem;
     text-align: center;
     font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
 }
 
 .sidebar .user h3 {
@@ -64,19 +72,26 @@ header {
 .sidebar .sidebar-nav {
     padding-top: 24px;
 }
-
-.sidebar .sidebar-nav a {
+.sidebar .sidebar-nav .side-nav-feat {
     display: block;
-    margin: 12px 0;
+    margin: 16px 0;
     padding: 8px;
-    border-radius: 50px;
+    border-radius: 10px;
     font-size: 17px;
     box-shadow: var(--box-shadow);
     color: var(--black);
     text-align: left;
 }
 
-.sidebar .sidebar-nav a:hover {
+.sidebar .sidebar-nav .side-nav-second-level {
+    margin-left: 24px;
+}
+
+.sidebar .sidebar-nav .side-nav-second-level a {
+    font-size: 15px;
+}
+
+.sidebar .sidebar-nav .side-nav-feat:hover {
     box-shadow: var(--box-shadow-inset);
     color: var(--green);
 }
