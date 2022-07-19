@@ -51,6 +51,7 @@
                 <th>#</th>
                 <th>StudentID</th>
                 <th>FullName</th>
+                <th>FacultyName</th>
                 <th>BirthDate</th>
                 <th>Gender</th>
                 <th>Address</th>
@@ -123,6 +124,7 @@
                     { data: 'id', name: 'id' },
                     { data: 'studentID', name: 'studentID'},
                     { data: 'fullName', name: 'fullName' },
+                    { data: 'facultyName', name: 'facultyName'},
                     { data: 'birthDate', name: 'birthDate' },
                     { data: 'gender', name: 'gender' },
                     { data: 'address', name: 'address' },

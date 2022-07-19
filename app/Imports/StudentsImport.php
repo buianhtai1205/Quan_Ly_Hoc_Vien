@@ -18,6 +18,7 @@ class StudentsImport implements ToArray, WithHeadingRow
                 $studentID =  $each['studentid'];
                 $password = $each['password'];
                 $fullName = $each['fullname'];
+                $facultyName = $each['facultyname'];
                 $birthDate = strtotime($each['birthdate']);
                 $newFormat = date('Y-m-d', $birthDate);
                 $gender = $each['gender'];
@@ -28,6 +29,7 @@ class StudentsImport implements ToArray, WithHeadingRow
                     'studentID' => $studentID,
                     'password' => $password,
                     'fullName' => $fullName,
+                    'facultyName' => $facultyName,
                     'birthDate' => $newFormat,
                     'gender' => $gender,
                     'address' => $address,

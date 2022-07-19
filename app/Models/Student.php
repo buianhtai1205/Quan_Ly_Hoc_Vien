@@ -17,6 +17,7 @@ class Student extends Model
         'studentID',
         'password',
         'fullName',
+        'facultyName',
         'birthDate',
         'gender',
         'address',
