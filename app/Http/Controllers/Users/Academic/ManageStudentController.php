@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users\Academic;
 use App\Http\Controllers\Controller;
 use App\Imports\StudentsImport;
 use App\Models\Course;
+use App\Models\Faculty;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
@@ -32,8 +33,10 @@ class ManageStudentController extends Controller
     public function index()
     {
         $courses = Course::all();
+        $faculties = Faculty::all();
         return view('user.academic.manage_student.index', [
             'courses' => $courses,
+            'faculties' => $faculties,
         ]);
     }
 
@@ -50,8 +53,13 @@ class ManageStudentController extends Controller
                 })
                 ->filter(function ($instance) use ($request) {
                     $course = $request->get('course');
+                    $faculty = $request->get('faculty') ?? "";
                     $strCourse = substr($course, -2, 2);
                     $instance->where("studentID", "LIKE", "$strCourse%");
+                    if ($faculty !== '')
+                    {
+                        $instance->where("facultyName", "=", (string) $faculty);
+                    }
                 })
                 ->make(true);
         }

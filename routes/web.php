@@ -58,3 +58,4 @@ Route::group(['prefix' => '/manage_student', 'as' => 'manage_students.'], functi
     Route::post('/import-csv', [ManageStudentController::class, 'importCsv'])->name('import_csv');
     Route::get('/api', [ManageStudentController::class, 'api'])->name('api');
 });
+
