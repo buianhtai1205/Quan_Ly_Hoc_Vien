@@ -5,6 +5,7 @@ use App\Http\Controllers\Users\Academic\ManageTeacherController;
 use App\Http\Controllers\Users\Academic\ManageCourseController;
 use App\Http\Controllers\Users\Academic\ManageStudentClassController;
 use App\Http\Controllers\Users\Academic\ManageStudentController;
+use App\Http\Controllers\Users\Academic\DivideClassStudentController;
 
 Route::get('/', function () {
     return view('user.index');
@@ -59,3 +60,8 @@ Route::group(['prefix' => '/manage_student', 'as' => 'manage_students.'], functi
     Route::get('/api', [ManageStudentController::class, 'api'])->name('api');
 });
 
+Route::group(['prefix' => '/divide_class_student', 'as' => 'divide_class_students.'], function() {
+    Route::get('/', [DivideClassStudentController::class, 'getInformationStudents'])->name('getInformationStudents');
+    Route::get('/info', [DivideClassStudentController::class, 'index'])->name('index');
+    Route::get('/divide', [DivideClassStudentController::class, 'divideClass'])->name('divideClass');
+});

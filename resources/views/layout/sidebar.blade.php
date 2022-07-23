@@ -57,7 +57,7 @@
                 <a href="{{ route('manage_students.index') }}" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Manage Student</a>
             </li>
         </ul>
-        <a class="side-nav-feat" href="#"><i class="fa-solid fa-compass icon-sidebar"></i>Divide Class Student</a>
+        <a class="side-nav-feat" href="{{ route('divide_class_students.getInformationStudents') }}"><i class="fa-solid fa-compass icon-sidebar"></i>Divide Class Student</a>
         <a class="side-nav-feat" href="#"><i class="fa-solid fa-compass icon-sidebar"></i>Teaching Assignment</a>
         <a class="side-nav-feat" href="#"><i class="fa-solid fa-right-from-bracket icon-sidebar"></i>Logout</a>
     </nav>
