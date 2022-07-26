@@ -5,6 +5,7 @@ use App\Http\Controllers\Users\Academic\ManageTeacherController;
 use App\Http\Controllers\Users\Academic\ManageCourseController;
 use App\Http\Controllers\Users\Academic\ManageStudentClassController;
 use App\Http\Controllers\Users\Academic\ManageStudentController;
+use App\Http\Controllers\Users\Academic\ManageSectionController;
 use App\Http\Controllers\Users\Academic\DivideClassStudentController;
 
 Route::get('/', function () {
@@ -60,8 +61,22 @@ Route::group(['prefix' => '/manage_student', 'as' => 'manage_students.'], functi
     Route::get('/api', [ManageStudentController::class, 'api'])->name('api');
 });
 
+Route::group(['prefix' => '/manage_section', 'as' => 'manage_sections.'], function() {
+    Route::get('/', [ManageSectionController::class, 'index'])->name('index');
+    Route::get('/create', [ManageSectionController::class, 'create'])->name('create');
+    Route::post('/create', [ManageSectionController::class, 'store'])->name('store');
+    Route::get('/create_multiple', [ManageSectionController::class, 'createMultiple'])->name('create_multiple');
+    Route::post('/create_multiple', [ManageSectionController::class, 'storeMultiple'])->name('store_multiple');
+    Route::get('/edit/{section}', [ManageSectionController::class, 'edit'])->name('edit');
+    Route::put('/edit/{section}', [ManageSectionController::class, 'update'])->name('update');
+    Route::delete('/destroy/{section}', [ManageSectionController::class, 'destroy'])->name('destroy');
+    Route::get('/api', [ManageSectionController::class, 'api'])->name('api');
+});
+
 Route::group(['prefix' => '/divide_class_student', 'as' => 'divide_class_students.'], function() {
     Route::get('/', [DivideClassStudentController::class, 'getInformationStudents'])->name('getInformationStudents');
     Route::get('/info', [DivideClassStudentController::class, 'index'])->name('index');
     Route::get('/divide', [DivideClassStudentController::class, 'divideClass'])->name('divideClass');
 });
+
+

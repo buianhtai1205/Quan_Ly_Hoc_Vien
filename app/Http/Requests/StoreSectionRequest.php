@@ -13,18 +13,40 @@ class StoreSectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            //
+            'sectionID' => [
+                'required',
+                'unique:App\Models\Section',
+            ],
+            'subjectID' => [
+                'required'
+            ],
+            'teacherID' => [
+                'nullable'
+            ],
+            'typeSection' => [
+                'required'
+            ],
+            'shift' => [
+                'nullable'
+            ],
+            'room' => [
+                'nullable'
+            ],
+            'beginDate' => [
+                'nullable'
+            ],
+            'numOfLesson' => [
+                'required'
+            ],
+            'limit' => [
+                'required'
+            ]
         ];
     }
 }

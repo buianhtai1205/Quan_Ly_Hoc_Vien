@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users\Academic;
 
+use App\Http\Controllers\Controller;
 use App\Models\Section;
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
 use App\Models\Subject;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 
-class SectionController extends Controller
+class ManageSectionController extends Controller
 {
 
     private $model;
@@ -26,7 +28,7 @@ class SectionController extends Controller
 
     public function index()
     {
-        return view('section.index');
+        return view('user.academic.manage_section.index');
     }
 
     public function api()
@@ -36,10 +38,10 @@ class SectionController extends Controller
                 return $section->subject->subjectName;
             })
             ->addColumn('edit', function ($object) {
-                return route('admin.sections.edit', $object);
+                return route('manage_sections.edit', $object);
             })
             ->addColumn('delete', function ($object) {
-                return route('admin.sections.destroy', $object);
+                return route('manage_sections.destroy', $object);
             })
             ->make(true);
     }
@@ -47,7 +49,15 @@ class SectionController extends Controller
     public function create()
     {
         $subjects = Subject::all();
-        return view('section.create', [
+        return view('user.academic.manage_section.create', [
+            'subjects' => $subjects,
+        ]);
+    }
+
+    public function createMultiple()
+    {
+        $subjects = Subject::all();
+        return view('user.academic.manage_section.createMultiple', [
             'subjects' => $subjects,
         ]);
     }
@@ -56,8 +66,27 @@ class SectionController extends Controller
     public function store(StoreSectionRequest $request)
     {
         $this->model->create($request->validated());
-        return redirect()->route('admin.sections.index')
+        return redirect()->route('manage_sections.index')
             ->with('success', 'Inserted successful');
+    }
+
+    public function storeMultiple(Request $request)
+    {
+        // get value from Request
+        $subjectID = $request->get('subjectID');
+        $typeSection = $request->get('typeSection');
+        $numOfLesson = $request->get('numOfLesson');
+        $limit = $request->get('limit');
+        $numOfSection = $request->get('numOfSection');
+        $schoolYear = $request->get('schoolYear');
+        $semester = $request->get('semester');
+
+        // create section
+        (new Section)->createManySections($subjectID, $typeSection, $numOfLesson,
+            $limit, $numOfSection, $schoolYear, $semester);
+
+        return redirect()->route('manage_sections.index')
+            ->with('success', 'Inserted Multiple successful');
     }
 
 
@@ -70,7 +99,7 @@ class SectionController extends Controller
     public function edit(Section $section)
     {
         $subjects = Subject::all();
-        return view('section.edit', [
+        return view('user.academic.manage_section.edit', [
             'section' => $section,
             'subjects' => $subjects,
         ]);
@@ -80,7 +109,7 @@ class SectionController extends Controller
     public function update(UpdateSectionRequest $request, Section $section)
     {
         $section->update($request->validated());
-        return redirect()->route('admin.sections.index')
+        return redirect()->route('manage_sections.index')
             ->with('success', 'Updated successful!');
     }
 
@@ -88,7 +117,7 @@ class SectionController extends Controller
     public function destroy(Section $section)
     {
         $section->delete();
-        return redirect()->route('admin.sections.index')
+        return redirect()->route('manage_sections.index')
             ->with('success', 'Deleted successful!');
     }
 }
