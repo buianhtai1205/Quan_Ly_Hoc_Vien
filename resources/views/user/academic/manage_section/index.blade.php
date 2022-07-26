@@ -30,7 +30,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <a class="btn btn-success" href="{{ route('manage_sections.create') }}">Insert</a>
         <a class="btn btn-info" href="{{ route('manage_sections.create_multiple') }}">Insert Multiple</a>
-        <a class="btn btn-primary" href="">Insert Automatic</a>
+        <a class="btn btn-primary" href="{{ route('manage_sections.create_automatic') }}">Insert Automatic</a>
         <br> <br>
         <table id="table-index" class="table table-striped dt-responsive">
             <thead>

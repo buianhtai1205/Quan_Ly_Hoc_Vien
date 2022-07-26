@@ -62,6 +62,11 @@ class ManageSectionController extends Controller
         ]);
     }
 
+    public function createAutomatic()
+    {
+        return view('user.academic.manage_section.createAutomatic');
+    }
+
 
     public function store(StoreSectionRequest $request)
     {
@@ -87,6 +92,23 @@ class ManageSectionController extends Controller
 
         return redirect()->route('manage_sections.index')
             ->with('success', 'Inserted Multiple successful');
+    }
+
+    public function storeAutomatic(Request $request)
+    {
+        // get value from Request
+        $typeSection = $request->get('typeSection');
+        $numOfLesson = $request->get('numOfLesson');
+        $limit = $request->get('limit');
+        $numOfSection = $request->get('numOfSection');
+        $schoolYear = $request->get('schoolYear');
+        $semester = $request->get('semester');
+
+        (new Section)->createAutomaticSections($typeSection, $numOfLesson,
+            $limit, $numOfSection, $schoolYear, $semester);
+
+        return redirect()->route('manage_sections.index')
+            ->with('success', 'Inserted Automatic successful');
     }
 
 

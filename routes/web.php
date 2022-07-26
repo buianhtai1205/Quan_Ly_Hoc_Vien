@@ -67,6 +67,8 @@ Route::group(['prefix' => '/manage_section', 'as' => 'manage_sections.'], functi
     Route::post('/create', [ManageSectionController::class, 'store'])->name('store');
     Route::get('/create_multiple', [ManageSectionController::class, 'createMultiple'])->name('create_multiple');
     Route::post('/create_multiple', [ManageSectionController::class, 'storeMultiple'])->name('store_multiple');
+    Route::get('/create_automatic', [ManageSectionController::class, 'createAutomatic'])->name('create_automatic');
+    Route::post('/create_automatic', [ManageSectionController::class, 'storeAutomatic'])->name('store_automatic');
     Route::get('/edit/{section}', [ManageSectionController::class, 'edit'])->name('edit');
     Route::put('/edit/{section}', [ManageSectionController::class, 'update'])->name('update');
     Route::delete('/destroy/{section}', [ManageSectionController::class, 'destroy'])->name('destroy');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
@@ -23,14 +24,14 @@ class Section extends Model
         'room',
         'numOfLesson',
         'limit',
-    ];
+    ] ;
 
-    public function subject()
+    public function subject(): BelongsTo
     {
         return $this->belongsTo(Subject::class, 'subjectID', 'subjectID');
     }
 
-    public function createManySections($subjectID, $typeSection, $numOfLesson, $limit, $numOfSection, $schoolYear, $semester)
+    public function createManySections($subjectID, $typeSection, $numOfLesson, $limit, $numOfSection, $schoolYear, $semester): void
     {
         // create sectionID:
         //ex: SchoolYear: 2022; Semester: 1; subjectID: LTPHP
@@ -50,6 +51,18 @@ class Section extends Model
                 'numOfLesson' => $numOfLesson,
                 'limit' => $limit,
             ]);
+        }
+    }
+
+    public function createAutomaticSections($typeSection, $numOfLesson, $limit, $numOfSection, $schoolYear, $semester): void
+    {
+        // get list subject
+        $subjects = Subject::get();
+        foreach ($subjects as $subject) {
+            $subjectID = $subject->subjectID;
+            // create section for one subject
+            (new Section)->createManySections($subjectID, $typeSection, $numOfLesson,
+                $limit, $numOfSection, $schoolYear, $semester);
         }
     }
 }
