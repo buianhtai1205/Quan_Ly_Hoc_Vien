@@ -32,6 +32,7 @@ class DivideClassStudentController extends Controller
 
         $sum = Student::where("studentID", "LIKE", "$strCourse%")
             ->where("facultyName", "=", (string) $faculty)
+            ->whereNull("classID")
             ->count();
 
         return view('user.academic.divide_class_student.index', [
@@ -55,7 +56,9 @@ class DivideClassStudentController extends Controller
 
             // get list students according to faculty and course
             $students = Student::where("studentID", "LIKE", "$strCourse%")
-                ->where("facultyName", "=", (string) $faculty)->get();
+                ->where("facultyName", "=", (string) $faculty)
+                ->whereNull("classID")
+                ->get();
 
             // get facultyID from facultyName
             $facultyID = Faculty::where("facultyName", "=", $faculty)->first()->facultyID;
