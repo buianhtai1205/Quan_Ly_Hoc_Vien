@@ -26,7 +26,7 @@
                 <div class="form-group col-md-3">
                     <label for="faculty">Faculty : </label>
                     <select name="faculty" id='faculty' class="form-control" >
-                        <option value="">--Select Faculty--</option>
+                        <option value="all">--Tất cả--</option>
                         @foreach ($faculties as $faculty)
                             <option @if ($faculty->facultyName === $facultyCurrent) selected @endif
                                 value="{{ $faculty->facultyName }}">{{ $faculty->facultyName }}</option>

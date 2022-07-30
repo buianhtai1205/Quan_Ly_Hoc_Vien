@@ -24,4 +24,27 @@ class Student extends Model
         'phoneNumber',
         'avatar'
     ];
+
+    public static function getCountStudentsToDivide($course, $faculty)
+    {
+        //ex: course: 2022
+        // => strCourse: 22
+        $strCourse = substr($course, -2, 2);
+
+        if ($faculty !== 'all')
+        {
+            $sum = Student::where("studentID", "LIKE", "$strCourse%")
+                ->where("facultyName", "=", (string) $faculty)
+                ->whereNull("classID")
+                ->count();
+        }
+        else
+        {
+            $sum = Student::where("studentID", "LIKE", "$strCourse%")
+                ->whereNull("classID")
+                ->count();
+        }
+
+        return $sum;
+    }
 }

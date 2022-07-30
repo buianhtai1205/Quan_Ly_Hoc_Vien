@@ -39,7 +39,7 @@
                 <div class="form-group col-md-3">
                     <label>Faculty : </label>
                     <select name="faculty" id='faculty' class="form-control" >
-                        <option value="">--Select Faculty--</option>
+                        <option value="all">--Tất cả--</option>
                         @foreach ($faculties as $faculty)
                             <option value="{{ $faculty->facultyName }}">{{ $faculty->facultyName }}</option>
                         @endforeach

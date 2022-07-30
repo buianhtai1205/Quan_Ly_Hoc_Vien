@@ -13,8 +13,8 @@ class DivideClassStudentController extends Controller
 {
     public function getInformationStudents()
     {
-        $courses = Course::all();
-        $faculties = Faculty::all();
+        $courses = Course ::all();
+        $faculties = Faculty ::all();
         return view('user.academic.divide_class_student.getInformationStudents', [
             'courses' => $courses,
             'faculties' => $faculties,
@@ -23,17 +23,13 @@ class DivideClassStudentController extends Controller
 
     public function index(Request $request)
     {
-        $courses = Course::all();
-        $faculties = Faculty::all();
+        $courses = Course ::all();
+        $faculties = Faculty ::all();
 
-        $course = $request->get('course');
-        $faculty = $request->get('faculty');
-        $strCourse = substr($course, -2, 2);
+        $course = $request -> get('course');
+        $faculty = $request -> get('faculty');
 
-        $sum = Student::where("studentID", "LIKE", "$strCourse%")
-            ->where("facultyName", "=", (string) $faculty)
-            ->whereNull("classID")
-            ->count();
+        $sum = Student ::getCountStudentsToDivide($course, $faculty);
 
         return view('user.academic.divide_class_student.index', [
             'sum' => $sum,
@@ -46,37 +42,18 @@ class DivideClassStudentController extends Controller
 
     public function divideClass(Request $request)
     {
-        try
-        {
+        try {
             // get value from request
-            $numClass = $request->get('numClass');
-            $course = $request->get('course');
-            $faculty = $request->get('faculty');
-            $strCourse = substr($course, -2, 2);
+            $numClass = $request -> get('numClass');
+            $course = $request -> get('course');
+            $faculty = $request -> get('faculty');
 
-            // get list students according to faculty and course
-            $students = Student::where("studentID", "LIKE", "$strCourse%")
-                ->where("facultyName", "=", (string) $faculty)
-                ->whereNull("classID")
-                ->get();
+            Studentclass::handleDivide($numClass, $course, $faculty);
 
-            // get facultyID from facultyName
-            $facultyID = Faculty::where("facultyName", "=", $faculty)->first()->facultyID;
+            return redirect() -> route('divide_class_students.getInformationStudents')
+                -> with('success', 'Divided successful!');
 
-            // create array class to save classID
-            $arrayClassID = [];
-
-            // create num class
-            (new Studentclass)->createManyStudentClass($numClass, $strCourse, $course, $facultyID, $arrayClassID);
-
-            // divide
-            (new Studentclass)->divideStudentsToClasses($students, $arrayClassID);
-
-            return redirect()->route('divide_class_students.getInformationStudents')
-                ->with('success', 'Divided successful!');
-        }
-        catch (Exception $e)
-        {
+        } catch (Exception $e) {
             dd($e);
         }
     }
