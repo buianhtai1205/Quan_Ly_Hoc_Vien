@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Student;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToArray;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -24,10 +25,11 @@ class StudentsImport implements ToArray, WithHeadingRow
                 $gender = $each['gender'];
                 $address = $each['address'];
                 $phoneNumber = $each['phonenumber'];
+                $hashPassword = Hash::make($password);
 
                 Student::create([
                     'studentID' => $studentID,
-                    'password' => $password,
+                    'password' => $hashPassword,
                     'fullName' => $fullName,
                     'facultyName' => $facultyName,
                     'birthDate' => $newFormat,

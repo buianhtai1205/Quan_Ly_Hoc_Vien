@@ -9,6 +9,7 @@ use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Studentclass;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
@@ -54,9 +55,11 @@ class StudentController extends Controller
 
     public function store(StoreStudentRequest $request)
     {
+        $hashPassword = Hash::make($request->password);
         $path = Storage::disk('public')->putFile('avatars', $request->file('avatar'));
         $array = $request->validated();
         $array['avatar'] = $path;
+        $array['password'] = $hashPassword;
         $this->model->create($array);
 
         return redirect()->route('admin.students.index')->with('success', 'Inserted successful!');
@@ -78,7 +81,10 @@ class StudentController extends Controller
 
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $student->update($request->validated());
+        $hashPassword = Hash::make($request->password);
+        $array = $request->validated();
+        $array['password'] = $hashPassword;
+        $student->update($array);
         return redirect()->route('admin.students.index')->with('success', 'Updated successful!');
     }
 

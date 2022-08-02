@@ -41,9 +41,6 @@ class UpdateAcademicRequest extends FormRequest
                 'file',
                 'image',
             ],
-            'email' => [
-                'required',
-            ],
             'password' => [
                 'required',
             ],

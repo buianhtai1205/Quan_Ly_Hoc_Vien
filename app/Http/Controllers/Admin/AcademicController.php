@@ -9,6 +9,7 @@ use App\Models\Academic;
 use App\Http\Requests\StoreAcademicRequest;
 use App\Http\Requests\UpdateAcademicRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
@@ -62,12 +63,14 @@ class AcademicController extends Controller
 
     public function store(StoreAcademicRequest $request)
     {
+        $hashPassword = Hash::make($request->password);
         $path = Storage::disk('public')->putFile('avatars', $request->file('avatar'));
         $array = $request->validated();
         $array['avatar'] = $path;
+        $array['password'] = $hashPassword;
         Academic::create($array);
 
-        return redirect()->route('admin.academics.index')->with('success', 'Inserted successfull!');
+        return redirect()->route('admin.academics.index')->with('success', 'Inserted successful!');
     }
 
 
@@ -87,13 +90,16 @@ class AcademicController extends Controller
 
     public function update(UpdateAcademicRequest $request, Academic $academic)
     {
-        $academic->update($request->validated());
-        return redirect()->route('admin.academics.index')->with('success', 'Updated successfull!');
+        $hashPassword = Hash::make($request->password);
+        $array = $request->validated();
+        $array['password'] = $hashPassword;
+        $academic->update($array);
+        return redirect()->route('admin.academics.index')->with('success', 'Updated successful!');
     }
 
     public function destroy(Academic $academic)
     {
         $academic->delete();
-        return redirect()->route('admin.academics.index')->with('success', 'Deleted successfull!');
+        return redirect()->route('admin.academics.index')->with('success', 'Deleted successful!');
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
@@ -60,9 +61,11 @@ class ManageTeacherController extends Controller
 
     public function store(StoreTeacherRequest $request)
     {
+        $hashPassword = Hash::make($request->password);
         $path = Storage::disk('public')->putFile('avatars', $request->file('avatar'));
         $array = $request->validated();
         $array['avatar'] = $path;
+        $array['password'] = $hashPassword;
         $this->model->create($array);
 
         return redirect()->route('manage_teachers.index')->with('success', 'Inserted successful!');
@@ -85,7 +88,10 @@ class ManageTeacherController extends Controller
 
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
-        $teacher->update($request->validated());
+        $hashPassword = Hash::make($request->password);
+        $array = $request->validated();
+        $array['password'] = $hashPassword;
+        $teacher->update($array);
         return redirect()->route('manage_teachers.index')
             ->with('success', 'Updated successfull!');
     }
