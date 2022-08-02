@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\AcademicController;
-use App\Http\Controllers\SectionController;
-use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\FacultyController;
-use App\Http\Controllers\StudentclassController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\Admin\AcademicController;
+use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\FacultyController;
+use App\Http\Controllers\Admin\StudentclassController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/academic/api', [AcademicController::class, 'api'])->name('admin.academics.api');

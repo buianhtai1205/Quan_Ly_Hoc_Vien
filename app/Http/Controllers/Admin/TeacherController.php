@@ -1,6 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;

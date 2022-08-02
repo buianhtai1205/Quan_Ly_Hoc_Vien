@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+
+use App\Http\Controllers\Controller;
 use App\Imports\AcademicsImport;
 use App\Models\Academic;
 use App\Http\Requests\StoreAcademicRequest;
