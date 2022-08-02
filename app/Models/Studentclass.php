@@ -98,9 +98,11 @@ class Studentclass extends Model
     public static function handleDivideAllFaculty($numClass, $course): void
     {
         $listFaculty = Faculty::all();
+        $count = Faculty::count();
         foreach ($listFaculty as $faculty)
         {
-            self::handleDivideOneFaculty($numClass, $course, $faculty->facultyName);
+            $numClassAfter = floor($numClass/$count);
+            self::handleDivideOneFaculty($numClassAfter, $course, $faculty->facultyName);
         }
     }
 
