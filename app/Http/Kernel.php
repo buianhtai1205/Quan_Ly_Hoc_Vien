@@ -64,5 +64,14 @@ Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        'academic.auth' => \App\Http\Middleware\AcademicAuth::class,
+        'academic.guest' => \App\Http\Middleware\RedirectIfAcademicAuth::class,
+
+        'teacher.auth' => \App\Http\Middleware\TeacherAuth::class,
+        'teacher.guest' => \App\Http\Middleware\RedirectIfTeacherAuth::class,
+
+        'student.auth' => \App\Http\Middleware\StudentAuth::class,
+        'student.guest' => \App\Http\Middleware\RedirectIfStudentAuth::class,
     ];
 }

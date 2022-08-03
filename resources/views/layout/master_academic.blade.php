@@ -80,8 +80,6 @@
     }
     // ]]>
 
-    // change text button login to logout
-    document.getElementById('btn-login').innerText = 'Logout';
 
 </script>
 

@@ -72,8 +72,11 @@
 
 
                             </ul>
-                            <a class="nav-btn" href="{{ route('users.login') }}">
+                            <a id="btn-login" class="nav-btn" href="{{ route('users.login') }}">
                                 <button id="btn-login" class="btn btn-success">Login</button>
+                            </a>
+                            <a id="btn-logout" class="nav-btn d-none" href="{{ route('users.logout') }}">
+                                <button id="btn-login" class="btn btn-success">Logout</button>
                             </a>
                         </div>
                     </nav>

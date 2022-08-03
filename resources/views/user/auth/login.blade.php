@@ -15,8 +15,12 @@
         <div class="title">ASM School</div>
         <div class="sub-title">Page Management for University</div>
     </div>
+    @if(Session::has('error'))
+        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+    @endif
     <div class="fields">
-        <form action="">
+        <form action="{{ route('users.loginHandle') }}" method="POST">
+            @csrf
             <div class="form-line">
                 <div class="radio-button-group">
                     <input type="radio" name="object" checked="checked" value="Student" id="Student" />
@@ -29,11 +33,11 @@
             </div>
             <div class="username">
                 <i class="fa-solid fa-user"></i>
-                <input type="username" placeholder="Enter your username">
+                <input type="username" name="username" id="username" placeholder="Enter your username">
             </div>
             <div class="password">
                 <i class="fa-solid fa-lock"></i>
-                <input type="password" placeholder="Enter your password">
+                <input type="password" name="password" id="password" placeholder="Enter your password">
             </div>
 
             <div class="form-check">

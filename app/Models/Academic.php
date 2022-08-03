@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-// add soft delete
-
-class Academic extends Model
+class Academic extends Authenticatable
 {
     use HasFactory;
     use Notifiable,
@@ -24,4 +23,6 @@ class Academic extends Model
         'phoneNumber',
         'avatar',
     ];
+
+
 }

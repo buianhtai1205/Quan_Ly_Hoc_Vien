@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Users\Auth\LoginAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\Academic\ManageTeacherController;
 use App\Http\Controllers\Users\Academic\ManageCourseController;
@@ -7,18 +8,26 @@ use App\Http\Controllers\Users\Academic\ManageStudentClassController;
 use App\Http\Controllers\Users\Academic\ManageStudentController;
 use App\Http\Controllers\Users\Academic\ManageSectionController;
 use App\Http\Controllers\Users\Academic\DivideClassStudentController;
+use App\Http\Controllers\Users\Academic\TeachingAssignmentController;
 
 Route::get('/', function () {
     return view('user.index');
 });
 
-Route::get('/login', function () {
-    return view('user.login');
-})->name('users.login');
+Route::get('/login', [LoginAuthController::class, 'showLoginForm'])->name('users.login');
+Route::post('/loginHandle', [LoginAuthController::class, 'login'])->name('users.loginHandle');
+Route::get('/logout', [LoginAuthController::class, 'logout'])->name('users.logout');
 
-Route::get('/home', function () {
-    return view('user.home');
-});
+Route::middleware('auth:academic')->get('/homeAcademic', function () {
+    return view('user.academic.home');
+})->name('academics.home');
+Route::middleware('auth:teacher')->get('/homeTeacher', function () {
+    return view('user.teacher.home');
+})->name('teachers.home');
+Route::middleware('auth:student')->get('/homeStudent', function () {
+    return view('user.student.home');
+})->name('students.home');
+
 
 
 Route::group(['prefix' => '/manage_teacher', 'as' => 'manage_teachers.'], function() {
@@ -79,6 +88,12 @@ Route::group(['prefix' => '/divide_class_student', 'as' => 'divide_class_student
     Route::get('/', [DivideClassStudentController::class, 'getInformationStudents'])->name('getInformationStudents');
     Route::get('/info', [DivideClassStudentController::class, 'index'])->name('index');
     Route::get('/divide', [DivideClassStudentController::class, 'divideClass'])->name('divideClass');
+});
+
+Route::group(['prefix' => '/teaching_assignment', 'as' => 'teaching_assignments.'], function() {
+    Route::get('/get_info_assignment', [TeachingAssignmentController::class, 'getInfoAssignment'])->name('get_info_assignment');
+    Route::get('/', [TeachingAssignmentController::class, 'index'])->name('index');
+    Route::get('/assign', [TeachingAssignmentController::class, 'assignment'])->name('assign');
 });
 
 
