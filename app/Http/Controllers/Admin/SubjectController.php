@@ -28,7 +28,7 @@ class SubjectController extends Controller
     public function index()
     {
         $subjects = $this->model->all();
-        return view('subject.index', [
+        return view('admin.subject.index', [
             'subjects' => $subjects,
         ]);
     }
@@ -36,7 +36,7 @@ class SubjectController extends Controller
     public function create()
     {
         $faculties = Faculty::all();
-        return view('subject.create', [
+        return view('admin.subject.create', [
             'faculties' => $faculties,
         ]);
     }
@@ -63,7 +63,7 @@ class SubjectController extends Controller
     public function edit(Subject $subject)
     {
         $faculties = Faculty::all();
-        return view('subject.edit', [
+        return view('admin.subject.edit', [
             'subject' => $subject,
             'faculties' => $faculties,
         ]);

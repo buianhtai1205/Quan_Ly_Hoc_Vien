@@ -16,7 +16,7 @@
 
 <body>
 <!-- ################# Header Starts Here#######################--->
-@include('layout.header')
+@include('admin.layout.header')
 <!-- ################# Header Ends Here#######################--->
 
 <!--################### Slider Starts Here #######################--->
@@ -401,7 +401,7 @@
 </section>
 
 <!-- ################# Footer Starts Here#######################--->
-@include('layout.footer')
+@include('admin.layout.footer')
 <!-- ################# Footer Ends Here#######################--->
 
 <!-- ################# Source Copy Template#######################--->

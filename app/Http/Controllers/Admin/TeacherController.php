@@ -28,7 +28,7 @@ class TeacherController extends Controller
     }
     public function index()
     {
-        return view('teacher.index');
+        return view('admin.teacher.index');
     }
 
     public function api()
@@ -45,7 +45,7 @@ class TeacherController extends Controller
 
     public function create()
     {
-        return view('teacher.create');
+        return view('admin.teacher.create');
     }
 
     public function store(StoreTeacherRequest $request)
@@ -69,7 +69,7 @@ class TeacherController extends Controller
 
     public function edit(Teacher $teacher)
     {
-        return view('teacher.edit', [
+        return view('admin.teacher.edit', [
             'teacher' => $teacher,
         ]);
     }

@@ -31,7 +31,7 @@ class AcademicController extends Controller
     }
     public function index()
     {
-        return view('academic.index');
+        return view('admin.academic.index');
     }
 
     public function api()
@@ -57,7 +57,7 @@ class AcademicController extends Controller
 
     public function create()
     {
-        return view('academic.create');
+        return view('admin.academic.create');
     }
 
 
@@ -83,7 +83,7 @@ class AcademicController extends Controller
 
     public function edit(Academic $academic)
     {
-        return view('academic.edit', [
+        return view('admin.academic.edit', [
             'academic' => $academic,
         ]);
     }

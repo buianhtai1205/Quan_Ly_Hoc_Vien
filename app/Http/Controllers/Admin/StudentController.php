@@ -30,7 +30,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        return view('student.index');
+        return view('admin.student.index');
     }
 
     public function api()
@@ -48,7 +48,7 @@ class StudentController extends Controller
     public function create()
     {
         $studentClasses = Studentclass::all();
-        return view('student.create', [
+        return view('admin.student.create', [
             'studentClasses' => $studentClasses,
         ]);
     }
@@ -73,7 +73,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         $studentClasses = Studentclass::all();
-        return view('student.edit', [
+        return view('admin.student.edit', [
             'student' => $student,
             'studentClasses' => $studentClasses,
         ]);

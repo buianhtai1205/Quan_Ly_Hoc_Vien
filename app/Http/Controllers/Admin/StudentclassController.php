@@ -29,7 +29,7 @@ class StudentclassController extends Controller
     public function index()
     {
         $studentClasses = $this->model->all();
-        return view('studentClass.index', [
+        return view('admin.studentClass.index', [
             'studentClasses' => $studentClasses,
         ]);
     }
@@ -38,7 +38,7 @@ class StudentclassController extends Controller
     {
         $courses = Course::all();
         $faculties = Faculty::all();
-        return view('studentClass.create', [
+        return view('admin.studentClass.create', [
             'courses' => $courses,
             'faculties' => $faculties,
         ]);
@@ -62,7 +62,7 @@ class StudentclassController extends Controller
     {
         $courses = Course::all();
         $faculties = Faculty::all();
-        return view('studentClass.edit', [
+        return view('admin.studentClass.edit', [
             'studentClass' => $studentClass,
             'courses' => $courses,
             'faculties' => $faculties,

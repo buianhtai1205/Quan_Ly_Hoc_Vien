@@ -27,7 +27,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = $this->model->all();
-        return view('course.index', [
+        return view('admin.course.index', [
             'courses' => $courses,
         ]);
     }
@@ -35,7 +35,7 @@ class CourseController extends Controller
 
     public function create()
     {
-        return view('course.create');
+        return view('admin.course.create');
     }
 
     public function store(StoreCourseRequest $request)
@@ -53,7 +53,7 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
-        return view('course.edit', [
+        return view('admin.course.edit', [
             'course' => $course,
         ]);
     }

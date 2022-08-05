@@ -29,7 +29,7 @@ class SectionController extends Controller
 
     public function index()
     {
-        return view('section.index');
+        return view('admin.section.index');
     }
 
     public function api()
@@ -50,7 +50,7 @@ class SectionController extends Controller
     public function create()
     {
         $subjects = Subject::all();
-        return view('section.create', [
+        return view('admin.section.create', [
             'subjects' => $subjects,
         ]);
     }
@@ -73,7 +73,7 @@ class SectionController extends Controller
     public function edit(Section $section)
     {
         $subjects = Subject::all();
-        return view('section.edit', [
+        return view('admin.section.edit', [
             'section' => $section,
             'subjects' => $subjects,
         ]);

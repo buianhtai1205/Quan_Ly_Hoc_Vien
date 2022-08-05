@@ -27,7 +27,7 @@ class FacultyController extends Controller
     public function index()
     {
         $faculties = $this->model->all();
-        return view('faculty.index', [
+        return view('admin.faculty.index', [
             'faculties' => $faculties,
         ]);
     }
@@ -35,7 +35,7 @@ class FacultyController extends Controller
 
     public function create()
     {
-        return view('faculty.create');
+        return view('admin.faculty.create');
     }
 
 
@@ -53,7 +53,7 @@ class FacultyController extends Controller
 
     public function edit(Faculty $faculty)
     {
-        return view('faculty.edit', [
+        return view('admin.faculty.edit', [
             'faculty' => $faculty,
         ]);
     }

@@ -1,4 +1,4 @@
-@extends('layout.master_academic')
+@extends('admin.layout.master_academic')
 
 @section('content')
     {{--  Title  --}}
