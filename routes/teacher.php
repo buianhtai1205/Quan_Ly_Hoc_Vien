@@ -15,3 +15,4 @@ Route::group(['prefix' => '/register_teaching', 'as' => 'register_teachings.', '
     Route::post('/update', [RegisterTeachingController::class, 'update'])->name('update');
     Route::post('/destroy', [RegisterTeachingController::class, 'destroy'])->name('destroy');
 });
+

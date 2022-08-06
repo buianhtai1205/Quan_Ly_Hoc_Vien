@@ -1,4 +1,4 @@
-@extends('admin.layout.master_academic')
+@extends('layout.user.master_academic')
 @section('content')
     {{--  Title  --}}
     <div class="content-title">
@@ -22,10 +22,5 @@
         </h5>
     </div>
 @endsection
-@push('js')
-    <script>
-        document.getElementById("btn-login").classList.add("d-none");
-        document.getElementById("btn-logout").classList.remove("d-none");
-    </script>
-@endpush
+
 

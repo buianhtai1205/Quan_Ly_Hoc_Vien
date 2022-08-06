@@ -85,3 +85,9 @@
         </div>
     </div>
 </header>
+@if(Auth::guard('academic')->check() || Auth::guard('teacher')->check() || Auth::guard('student')->check())
+    <script>
+        document.getElementById("btn-login").classList.add("d-none");
+        document.getElementById("btn-logout").classList.remove("d-none");
+    </script>
+@endif

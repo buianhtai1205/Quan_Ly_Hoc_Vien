@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('layout.admin.master')
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <a class="btn btn-success" href="{{ route('admin.studentClasses.create') }}">Insert</a>

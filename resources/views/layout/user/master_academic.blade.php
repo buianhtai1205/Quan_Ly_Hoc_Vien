@@ -23,12 +23,12 @@
 
 <body>
 <!-- ################# Header Starts Here#######################--->
-@include('admin.layout.header')
+@include('layout.user.header')
 <!-- ################# Header Ends Here#######################--->
 
 <div class="container-home">
     <!-- ################# Sidebar Starts Here#######################--->
-@include('admin.layout.sidebar')
+@include('layout.user.sidebar')
 <!-- ################# Sidebar Ends Here#######################--->
 
     <div class="content">
@@ -37,7 +37,7 @@
 </div>
 
 <!-- ################# Footer Starts Here#######################--->
-@include('admin.layout.footer')
+@include('layout.user.footer')
 <!-- ################# Footer Ends Here#######################--->
 
 

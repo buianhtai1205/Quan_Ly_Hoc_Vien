@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('layout.admin.master')
 @section('content')
     <h4>Insert</h4>
     <form action="{{ route('admin.teachers.store') }}" method="POST" enctype="multipart/form-data">
