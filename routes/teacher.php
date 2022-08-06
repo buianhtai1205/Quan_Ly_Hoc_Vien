@@ -9,5 +9,9 @@ Route::middleware('auth:teacher')->get('/homeTeacher', function () {
 
 Route::group(['prefix' => '/register_teaching', 'as' => 'register_teachings.', 'middleware' => 'auth:teacher'], function() {
     Route::get('/', [RegisterTeachingController::class, 'index'])->name('index');
-    Route::post('/register', [RegisterTeachingController::class, 'register'])->name('register');
+    Route::get('/create', [RegisterTeachingController::class, 'create'])->name('create');
+    Route::post('/create', [RegisterTeachingController::class, 'store'])->name('store');
+    Route::post('/edit', [RegisterTeachingController::class, 'edit'])->name('edit');
+    Route::post('/update', [RegisterTeachingController::class, 'update'])->name('update');
+    Route::post('/destroy', [RegisterTeachingController::class, 'destroy'])->name('destroy');
 });

@@ -24,30 +24,42 @@
 
     {{--  Content  --}}
     <div class="content-main">
-        <form action="{{ route('register_teachings.register') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label for="simpleInput">SchoolYear</label>
-                    <input required name="schoolYear" value="{{ old('schoolYear') }}" type="text" id="simpleInput" class="form-control">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="simpleInput">Semester</label>
-                    <input required name="semester" value="{{ old('semester') }}" type="text" id="simpleInput" class="form-control">
-                </div>
-            </div>
-
-            <div class="form-row">
-                @foreach($faculty_subjects as $each)
-                    <div class="form-group col-md-2">
-                        <label for="simpleInput">{{ $each->subject->subjectName }}</label>
-                        <input hidden type="text" name="subjectIDs[]" value="{{ $each->subjectID }}">
-                        <input name="numOfSections[]"  type="number" id="simpleInput" class="form-control" value="0">
-                    </div>
-                @endforeach
-            </div>
-
-            <button class="btn btn-success">Register</button>
-        </form>
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <a class="btn btn-success" href="{{ route('register_teachings.create') }}">Insert</a>
+        <br> <br>
+        <table id="table-index" class="table table-striped dt-responsive">
+            <thead>
+            <tr>
+                <th>SubjectID</th>
+                <th>NumOfSection</th>
+                <th>SchoolYear</th>
+                <th>Semester</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            @foreach($register_teachings as $register_teaching)
+                <tr>
+                    <td>{{ $register_teaching->subjectID }}</td>
+                    <td>{{ $register_teaching->numOfSection }}</td>
+                    <td>{{ $register_teaching->schoolYear }}</td>
+                    <td>{{ $register_teaching->semester }}</td>
+                    <td>
+                        <form action="{{ route('register_teachings.edit') }}" method="post">
+                            @csrf
+                            <input hidden type="text" name="subjectID" value="{{ $register_teaching->subjectID }}">
+                            <button class="btn btn-primary">Edit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ route('register_teachings.destroy') }}" method="post">
+                            @csrf
+                            <input hidden type="text" name="subjectID" value="{{ $register_teaching->subjectID }}">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
     </div>
 @endsection

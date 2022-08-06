@@ -18,6 +18,8 @@ class RegisterTeaching extends Model
     ];
     protected $table = 'register_teaching';
     public $timestamps = false;
+    protected $primaryKey = ['teacherID', 'subjectID'];
+    public $incrementing = false;
 
     public function teacher(): BelongsTo
     {
@@ -30,22 +32,23 @@ class RegisterTeaching extends Model
     }
 
     public static function registerTeaching(
-        $schoolYear,
-        $semester,
-        $subjectIDs,
-        $numOfSections,
-        $teacherID
+        string $schoolYear,
+        string $semester,
+        array $subjectIDs,
+        array $numOfSections,
+        string $teacherID,
     ): void {
+
         $count = count($subjectIDs);
 
         for ($i = 0; $i < $count; $i++)
         {
-            if ($numOfSections[$i] > 0)
+            if ((int)$numOfSections[$i] > 0)
             {
                 self ::create([
                     'teacherID' => $teacherID,
-                    'subjectID' => $subjectIDs[$i],
-                    'numOfSection' => $numOfSections[$i],
+                    'subjectID' => (string)$subjectIDs[$i],
+                    'numOfSection' => (string)$numOfSections[$i],
                     'schoolYear' => $schoolYear,
                     'semester' => $semester,
                 ]);
