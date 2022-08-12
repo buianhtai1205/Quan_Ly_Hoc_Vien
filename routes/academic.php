@@ -9,6 +9,8 @@ use App\Http\Controllers\Users\Academic\ManageSectionController;
 use App\Http\Controllers\Users\Academic\DivideClassStudentController;
 use App\Http\Controllers\Users\Academic\TeachingAssignmentController;
 
+Route::middleware('auth:academic')->get('/testAcademic', [\Tests\Feature\ExampleTest::class, 'test_example']);
+
 Route::middleware('auth:academic')->get('/homeAcademic', function () {
     return view('user.academic.home');
 })->name('academics.home');
@@ -74,7 +76,8 @@ Route::group(['prefix' => '/divide_class_student', 'as' => 'divide_class_student
 });
 
 Route::group(['prefix' => '/teaching_assignment', 'as' => 'teaching_assignments.', 'middleware' => 'auth:academic'], function() {
-    Route::get('/get_info_assignment', [TeachingAssignmentController::class, 'getInfoAssignment'])->name('get_info_assignment');
     Route::get('/', [TeachingAssignmentController::class, 'index'])->name('index');
-    Route::get('/assign', [TeachingAssignmentController::class, 'assignment'])->name('assign');
+    Route::get('/assignment', [TeachingAssignmentController::class, 'assignment'])->name('assignment');
+    Route::post('/assign', [TeachingAssignmentController::class, 'assign'])->name('assign');
+    Route::post('/import-csv-room', [TeachingAssignmentController::class, 'importCsvRoom'])->name('import_csv_room');
 });

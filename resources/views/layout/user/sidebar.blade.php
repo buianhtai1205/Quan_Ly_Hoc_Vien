@@ -76,7 +76,7 @@
                 </li>
             </ul>
             <a class="side-nav-feat" href="{{ route('divide_class_students.getInformationStudents') }}"><i class="fa-solid fa-compass icon-sidebar"></i>Divide Class Student</a>
-            <a class="side-nav-feat" href="{{ route('teaching_assignments.get_info_assignment') }}"><i class="fa-solid fa-compass icon-sidebar"></i>Teaching Assignment</a>
+            <a class="side-nav-feat" href="{{ route('teaching_assignments.index') }}"><i class="fa-solid fa-compass icon-sidebar"></i>Teaching Assignment</a>
         @endif
 
         @if (Auth ::guard('teacher')->check())
