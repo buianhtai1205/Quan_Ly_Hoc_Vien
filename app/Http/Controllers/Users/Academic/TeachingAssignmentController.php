@@ -14,7 +14,7 @@ class TeachingAssignmentController extends Controller
 {
     public function index()
     {
-        $sections = Section ::paginate(5);
+        $sections = Section ::where('status', 1)->paginate(5);
 
         return view('user.academic.teaching_assignment.index', [
             'sections' => $sections,
