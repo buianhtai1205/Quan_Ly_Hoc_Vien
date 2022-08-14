@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Users\Teacher\AcceptAssignmentController;
 use App\Http\Controllers\Users\Teacher\RegisterTeachingController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +15,13 @@ Route::group(['prefix' => '/register_teaching', 'as' => 'register_teachings.', '
     Route::post('/edit', [RegisterTeachingController::class, 'edit'])->name('edit');
     Route::post('/update', [RegisterTeachingController::class, 'update'])->name('update');
     Route::post('/destroy', [RegisterTeachingController::class, 'destroy'])->name('destroy');
+});
+
+Route::group(['prefix' => '/accept_assignment', 'as' => 'accept_assignments.', 'middleware' => 'auth:teacher'], function() {
+    Route::get('/', [AcceptAssignmentController::class, 'index'])->name('index');
+    Route::post('/api_room', [AcceptAssignmentController::class, 'apiRoom'])->name('api_room');
+    Route::post('/api_shift', [AcceptAssignmentController::class, 'apiShift'])->name('api_shift');
+    Route::post('/update', [AcceptAssignmentController::class, 'update'])->name('update');
+    Route::get('/accept', [AcceptAssignmentController::class, 'accept'])->name('accept');
 });
 

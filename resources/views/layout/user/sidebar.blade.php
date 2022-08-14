@@ -83,6 +83,9 @@
             <a class="side-nav-feat" href="{{ route('register_teachings.index') }}"><i class="fa-solid fa-compass icon-sidebar"></i>
                 Register For Teaching
             </a>
+            <a class="side-nav-feat" href="{{ route('accept_assignments.index') }}"><i class="fa-solid fa-compass icon-sidebar"></i>
+                Accept Assignment
+            </a>
         @endif
 
         @if (Auth ::guard('student')->check())
