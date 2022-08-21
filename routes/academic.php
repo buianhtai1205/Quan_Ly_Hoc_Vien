@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Users\Academic\ManageEducationProgram;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\Academic\ManageTeacherController;
 use App\Http\Controllers\Users\Academic\ManageCourseController;
@@ -14,6 +15,11 @@ Route::middleware('auth:academic')->get('/testAcademic', [\Tests\Feature\Example
 Route::middleware('auth:academic')->get('/homeAcademic', function () {
     return view('user.academic.home');
 })->name('academics.home');
+
+Route::group(['prefix' => '/manage_education_program', 'as' => 'manage_education_programs.', 'middleware' => 'auth:academic'], function() {
+    Route::get('/', [ManageEducationProgram::class, 'index'])->name('index');
+    Route::post('/import-csv', [ManageEducationProgram::class, 'importCsv'])->name('import_csv');
+});
 
 Route::group(['prefix' => '/manage_teacher', 'as' => 'manage_teachers.', 'middleware' => 'auth:academic'], function() {
     Route::get('/', [ManageTeacherController::class, 'index'])->name('index');
@@ -80,4 +86,5 @@ Route::group(['prefix' => '/teaching_assignment', 'as' => 'teaching_assignments.
     Route::get('/assignment', [TeachingAssignmentController::class, 'assignment'])->name('assignment');
     Route::post('/assign', [TeachingAssignmentController::class, 'assign'])->name('assign');
     Route::post('/import-csv-room', [TeachingAssignmentController::class, 'importCsvRoom'])->name('import_csv_room');
+    Route::get('/browse', [TeachingAssignmentController::class, 'browse'])->name('browse');
 });

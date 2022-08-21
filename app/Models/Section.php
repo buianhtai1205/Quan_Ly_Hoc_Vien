@@ -143,7 +143,8 @@ class Section extends Model
         $area = EmptyRoom::getAreaRoom($subject->id, $numArea);
 
         $sections = self ::where('sectionID', "LIKE", "$sectionIDHead%")
-            ->where('subjectID', $subject->subjectID)->get();
+            ->where('subjectID', $subject->subjectID)
+            ->where('status', '0')->get();
         $countSections = $sections->count();
 
         $registers = RegisterTeaching::where('schoolYear', $schoolYear)

@@ -36,7 +36,7 @@ class RegisterTeaching extends Model
         string $semester,
         array $subjectIDs,
         array $numOfSections,
-        string $teacherID,
+        string $teacherID
     ): void {
 
         $count = count($subjectIDs);

@@ -60,6 +60,9 @@
             <a id="feat-first-level" class="side-nav-feat" href="#" ><i class="fa-solid fa-compass icon-sidebar"></i>General Management</a>
             <ul id="feat-second-level" class="side-nav-second-level element-hidden" >
                 <li class="">
+                    <a href="{{ route('manage_education_programs.index') }}" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Mannage Education Program</a>
+                </li>
+                <li class="">
                     <a href="{{ route('manage_teachers.index') }}" class="side-nav-feat"><i class="fa-solid fa-angles-right icon-sidebar"></i>Mannage Teacher</a>
                 </li>
                 <li class="">
