@@ -95,4 +95,10 @@ class ExampleTest extends TestCase
 
         return $arrayTest;
     }
+
+    public function test_queue_handle()
+    {
+        $sectionIDs = Section::select('sectionID')->get();
+        return $sectionIDs;
+    }
 }

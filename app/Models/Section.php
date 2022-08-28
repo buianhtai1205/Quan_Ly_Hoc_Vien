@@ -194,4 +194,51 @@ class Section extends Model
             );
         }
     }
+
+    public static function getArraySectionAndClass(&$arrayResult, &$indexArrayResult)
+    {
+        $subjects = Subject::get();
+        foreach ($subjects as $subject) {
+            $sections = Section ::select('sectionID', 'beginDate', 'shift')
+                ->where('status', 1)
+                ->where('subjectID', $subject -> subjectID)
+                ->get();
+
+            $educationPrograms = EducationProgram::where('subjectName', $subject->subjectName)->get();
+
+            $flagYearCurrent = (int)substr($sections[0]->sectionID, 0, 2);
+            $flagSemesterCurrent = (int)substr($sections[0]->sectionID, 2, 1);
+            $courseIDArr = [];
+            $facultyArr = [];
+            $index = 0;
+            foreach($educationPrograms as $educationProgram)
+            {
+                $flagYear = (int)substr($educationProgram -> courseID, -2, 2);
+                if(($flagYearCurrent - $flagYear) * 2 + $flagSemesterCurrent === (int)$educationProgram->semester)
+                {
+                    $courseIDArr[$index] = $educationProgram -> courseID;
+                    $facultyArr[$index] = $educationProgram -> facultyID;
+                    $index++;
+                }
+            }
+
+            $classIDs = [];
+            $indexClassID = 0;
+            for ($i = 0; $i < $index; $i++)
+            {
+                $classIDArrays = Studentclass::select('classID')
+                    ->where('courseID', $courseIDArr[$i])
+                    ->where('facultyID', $facultyArr[$i])->get();
+                foreach ($classIDArrays as $classIDArray)
+                {
+                    $classIDs[$indexClassID] = $classIDArray;
+                    $indexClassID++;
+                }
+            }
+
+            $arrayResult[$indexArrayResult] = [$sections, $classIDs];
+            $indexArrayResult++;
+        }
+        return $arrayResult;
+    }
 }

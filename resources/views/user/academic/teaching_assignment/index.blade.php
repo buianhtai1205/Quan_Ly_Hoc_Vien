@@ -22,8 +22,24 @@
 
     {{--  Content  --}}
     <div class="content-main">
-        <a class="btn btn-success" href="{{ route('teaching_assignments.assignment') }}">Assign</a>
-        <br>
+        @if( $count > 0 )
+            <a class="btn btn-success" href="{{ route('teaching_assignments.assignment') }}">Assign</a>
+        @endif
+        @if ($count === 0)
+            <a class="btn btn-primary" href="{{ route('teaching_assignments.browse') }}">Browse</a>
+        @endif
+        <br> <br>
+        @if($countSectionNotAccept > 0)
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> You have {{ $countSectionNotAccept }} section(s) not accepted.
+                </div>
+        @endif
+
+        @if($countSectionNotAccept === 0)
+            <div class="alert alert-success">
+                <strong>Success! </strong>All section(s) accepted.
+            </div>
+        @endif
         <table id="table-index" class="table table-striped dt-responsive">
             <thead>
             <tr>

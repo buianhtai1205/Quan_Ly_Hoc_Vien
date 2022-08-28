@@ -10,7 +10,7 @@ use App\Http\Controllers\Users\Academic\ManageSectionController;
 use App\Http\Controllers\Users\Academic\DivideClassStudentController;
 use App\Http\Controllers\Users\Academic\TeachingAssignmentController;
 
-Route::middleware('auth:academic')->get('/testAcademic', [\Tests\Feature\ExampleTest::class, 'test_example']);
+Route::middleware('auth:academic')->get('/testAcademic', [\Tests\Feature\ExampleTest::class, 'test_queue_handle']);
 
 Route::middleware('auth:academic')->get('/homeAcademic', function () {
     return view('user.academic.home');
