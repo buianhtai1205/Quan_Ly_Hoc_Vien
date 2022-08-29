@@ -52,8 +52,8 @@ class ProcessAddStudentsToSections implements ShouldQueue
                }
             }
 
-            $section->status = 2;
-            $section->save();
+            Section::where('sectionID', $section->sectionID)
+                ->update(['status' => 2]);
         }
     }
 }
