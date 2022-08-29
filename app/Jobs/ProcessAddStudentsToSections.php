@@ -34,7 +34,7 @@ class ProcessAddStudentsToSections implements ShouldQueue
      */
     public function handle()
     {
-        $sections = Section::select('sectionID')->get();
+        $sections = Section::select(['sectionID', 'status'])->get();
         foreach ($sections as $section)
         {
             $sectionID = $section->sectionID;
@@ -51,6 +51,9 @@ class ProcessAddStudentsToSections implements ShouldQueue
                    ]);
                }
             }
+
+            $section->status = 2;
+            $section->save();
         }
     }
 }
