@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users\Academic;
 use App\Http\Controllers\Controller;
 use App\Imports\EmptyRoomsImport;
 use App\Jobs\ProcessAddStudentsToSections;
+use App\Jobs\ProcessGenerateAttendances;
 use App\Models\EducationProgram;
 use App\Models\EmptyRoom;
 use App\Models\Section;
@@ -63,7 +64,7 @@ class TeachingAssignmentController extends Controller
         }
     }
 
-    public function browse()
+    public function browse(): RedirectResponse
     {
         //b1: get arrayResult
         $arrayResult = [];
@@ -81,6 +82,7 @@ class TeachingAssignmentController extends Controller
         ProcessAddStudentsToSections::dispatch($arraySection);
 
         // queue: create Attendance
+        ProcessGenerateAttendances::dispatch();
 
         return redirect()
             -> route('teaching_assignments.index')

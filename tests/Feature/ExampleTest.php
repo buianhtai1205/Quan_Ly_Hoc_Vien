@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\EmptyRoom;
 use App\Models\RegisterTeaching;
 use App\Models\Section;
+use App\Models\Section_Student;
 use App\Models\Subject;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -98,7 +99,18 @@ class ExampleTest extends TestCase
 
     public function test_queue_handle()
     {
-        $sectionIDs = Section::select('sectionID')->get();
-        return $sectionIDs;
+        $section_students = Section_Student::get();
+        $arrDate = [];
+        foreach ($section_students as $section_student) {
+            $id = $section_student->id;
+            $date = $section_student->section->beginDate;
+            $numOfLesson = $section_student->section->numOfLesson;
+            for ($i = 0 ; $i < $numOfLesson; $i++) {
+                $arrDate[$i] = $date;
+                $date = date('Y-m-d', strtotime($date . ' +7 day'));
+            }
+            return $arrDate;
+        }
+
     }
 }
