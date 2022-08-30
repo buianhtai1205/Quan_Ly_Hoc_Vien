@@ -24,11 +24,13 @@ class TeachingAssignmentController extends Controller
         $sections = Section ::where('status', 1)->paginate(5);
         $count = Section ::whereNull('teacherID')->count();
         $countSectionNotAccept = Section ::where('status', 0)->count();
+        $countSectionNotBrowse = Section ::where('status', 1)->count();
 
         return view('user.academic.teaching_assignment.index', [
             'sections' => $sections,
             'count' => $count,
-            'countSectionNotAccept' => $countSectionNotAccept
+            'countSectionNotAccept' => $countSectionNotAccept,
+            'countSectionNotBrowse' => $countSectionNotBrowse,
         ]);
     }
 

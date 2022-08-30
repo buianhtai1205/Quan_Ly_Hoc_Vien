@@ -26,7 +26,7 @@
             <a class="btn btn-success" href="{{ route('teaching_assignments.assignment') }}">Assign</a>
         @endif
         @if ($count === 0)
-            <a class="btn btn-primary" href="{{ route('teaching_assignments.browse') }}">Browse</a>
+            <a class="btn btn-primary btn-browse" href="{{ route('teaching_assignments.browse') }}">Browse</a>
         @endif
         <br> <br>
         @if($countSectionNotAccept > 0)
@@ -35,9 +35,15 @@
                 </div>
         @endif
 
-        @if($countSectionNotAccept === 0)
+        @if($countSectionNotAccept === 0 && $countSectionNotBrowse > 0)
             <div class="alert alert-success">
                 <strong>Success! </strong>All section(s) accepted.
+            </div>
+        @endif
+
+        @if($countSectionNotBrowse === 0)
+            <div class="alert alert-success">
+                <strong>Success! </strong>All section(s) browsed.
             </div>
         @endif
         <table id="table-index" class="table table-striped dt-responsive">
@@ -67,4 +73,12 @@
         {{ $sections->links() }}
     </div>
 @endsection
+@push('js')
+<script>
+        const countSectionNotBrowse = {{ $countSectionNotBrowse }};
+        if (countSectionNotBrowse === 0) {
+            document.getElementsByClassName('btn-browse')[0].style.display = 'none';
+        }
+</script>
+@endpush
 
