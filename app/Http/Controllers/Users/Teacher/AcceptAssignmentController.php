@@ -63,6 +63,7 @@ class AcceptAssignmentController extends Controller
         $shift = $request -> shift;
 
         Section::where('sectionID', $sectionID)
+            -> where('status', 0)
             -> update([
                 'beginDate' => $beginDate,
                 'room' => $roomName,
