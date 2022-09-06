@@ -80,6 +80,7 @@
             </ul>
             <a class="side-nav-feat" href="{{ route('divide_class_students.getInformationStudents') }}"><i class="fa-solid fa-compass icon-sidebar"></i>Divide Class Student</a>
             <a class="side-nav-feat" href="{{ route('teaching_assignments.index') }}"><i class="fa-solid fa-compass icon-sidebar"></i>Teaching Assignment</a>
+            <a class="side-nav-feat" href="{{ route('academic_attendances.index') }}"><i class="fa-solid fa-compass icon-sidebar"></i>Attendance</a>
         @endif
 
         @if (Auth ::guard('teacher')->check())
@@ -88,6 +89,9 @@
             </a>
             <a class="side-nav-feat" href="{{ route('accept_assignments.index') }}"><i class="fa-solid fa-compass icon-sidebar"></i>
                 Accept Assignment
+            </a>
+            <a class="side-nav-feat" href="{{ route('teacher_attendances.select_classroom') }}"><i class="fa-solid fa-compass icon-sidebar"></i>
+                Attendance
             </a>
         @endif
 

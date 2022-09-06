@@ -25,6 +25,11 @@ class Section_Student extends Model
         return $this->belongsTo(Student::class, 'studentID', 'studentID');
     }
 
+    public function attendances(): BelongsTo
+    {
+        return $this->belongsTo(Attendance::class, 'id', 'section_student_id');
+    }
+
     public static function createArrayCheck(&$arrayResult, &$indexArrayResult): array
     {
         $arrayCheck = [];
