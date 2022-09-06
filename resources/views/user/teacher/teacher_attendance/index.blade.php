@@ -45,13 +45,25 @@
                         <td>{{ $student->studentID }}</td>
                         <td>{{ $student->student->fullName }}</td>
                         <td>
-                            <input id="{{ $student->studentID }}1"  type="radio" name="statuses[{{ $student->studentID }}]" value="1" checked>
+                            <input id="{{ $student->studentID }}1"  type="radio" name="statuses[{{ $student->studentID }}]" value="1"
+                                   @if($student->status == 1 || $student->status == 0)
+                                       checked
+                                   @endif >
                             <label for="{{ $student->studentID }}1">Đi học</label>
-                            <input class="ml-5" id="{{ $student->studentID }}2" type="radio" name="statuses[{{ $student->studentID }}]" value="2">
+                            <input class="ml-5" id="{{ $student->studentID }}2" type="radio" name="statuses[{{ $student->studentID }}]" value="2"
+                                   @if($student->status == 2)
+                                       checked
+                                   @endif >
                             <label for="{{ $student->studentID }}2">Vắng(KP)</label>
-                            <input class="ml-5" id="{{ $student->studentID }}3" type="radio" name="statuses[{{ $student->studentID }}]" value="3">
+                            <input class="ml-5" id="{{ $student->studentID }}3" type="radio" name="statuses[{{ $student->studentID }}]" value="3"
+                                   @if($student->status == 3)
+                                       checked
+                                   @endif >
                             <label for="{{ $student->studentID }}3">Vắng(P)</label>
-                            <input class="ml-5" id="{{ $student->studentID }}4" type="radio" name="statuses[{{ $student->studentID }}]" value="4">
+                            <input class="ml-5" id="{{ $student->studentID }}4" type="radio" name="statuses[{{ $student->studentID }}]" value="4"
+                                   @if($student->status == 4)
+                                       checked
+                                   @endif >
                             <label for="{{ $student->studentID }}4">Muộn</label>
                         </td>
                     </tr>

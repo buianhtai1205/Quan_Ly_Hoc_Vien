@@ -64,6 +64,15 @@ class TeacherAttendanceController extends Controller
             ->where('sectionID', $sectionID)
             ->get();
 
+        foreach($students as $student) {
+            $id = $student->id;
+            $status = Attendance::select('status')
+                ->where('section_student_id', $id)
+                ->where('date', $date)
+                ->first()->status;
+            $student->status = $status;
+        }
+
         return view('user.teacher.teacher_attendance.index', [
             'students' => $students,
             'date' => $date,
@@ -90,7 +99,7 @@ class TeacherAttendanceController extends Controller
         }
 
         return redirect()
-            ->route('teacher.attendances.select_classroom')
+            ->route('teacher_attendances.select_classroom')
             ->with('success', 'Attendance successfully!');
 
     }
