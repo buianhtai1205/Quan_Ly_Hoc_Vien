@@ -16,7 +16,7 @@ Route::get('/admin/student/api', [StudentController::class, 'api'])->name('admin
 Route::get('/admin/section/api', [SectionController::class, 'api'])->name('admin.sections.api');
 
 Route::get('/admin/', function () {
-    return view('auth.login');
+    return view('admin.auth.login');
 });
 Route::group(['prefix' => '/admin/academic', 'as' => 'admin.academics.'], function() {
     Route::get('/', [AcademicController::class, 'index'])->name('index');
