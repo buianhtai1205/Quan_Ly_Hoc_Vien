@@ -10,14 +10,14 @@ class LoginAuthController extends Controller
 {
     public function showLoginForm()
     {
-        if ( Auth ::guard('academic') -> check() ) {
-            return redirect() -> route('academics.home');
+        if (Auth::guard('academic')->check()) {
+            return redirect()->route('academics.home');
         }
-        if ( Auth ::guard('teacher') -> check() ) {
-            return redirect() -> route('teachers.home');
+        if (Auth::guard('teacher')->check()) {
+            return redirect()->route('teachers.home');
         }
-        if ( Auth ::guard('student') -> check() ) {
-            return redirect() -> route('students.home');
+        if (Auth::guard('student')->check()) {
+            return redirect()->route('students.home');
         }
 
         return view('user.auth.login');
@@ -30,20 +30,18 @@ class LoginAuthController extends Controller
             'password' => 'required',
         ]);
 
-        if ($request->object === 'AcademicStaff')
-        {
-            if(auth()->guard('academic')->attempt([
+        if ($request->object === 'AcademicStaff') {
+            if (auth()->guard('academic')->attempt([
                 'academicID' => $request->username,
                 'password' => $request->password,
-                ])) {
+            ])) {
                 $request->session()->regenerate();
                 return redirect()->intended(route('academics.home'));
             }
         }
 
-        if ($request->object === 'Teacher')
-        {
-            if(auth()->guard('teacher')->attempt([
+        if ($request->object === 'Teacher') {
+            if (auth()->guard('teacher')->attempt([
                 'teacherID' => $request->username,
                 'password' => $request->password,
             ])) {
@@ -51,9 +49,8 @@ class LoginAuthController extends Controller
                 return redirect()->intended(route('teachers.home'));
             }
         }
-        if ($request->object === 'Student')
-        {
-            if(auth()->guard('student')->attempt([
+        if ($request->object === 'Student') {
+            if (auth()->guard('student')->attempt([
                 'studentID' => $request->username,
                 'password' => $request->password,
             ])) {

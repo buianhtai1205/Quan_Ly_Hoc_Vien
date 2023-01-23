@@ -33,7 +33,7 @@ class TeacherAttendanceController extends Controller
             ->where('teacherID', $teacherID)
             ->where('subjectID', $subjectID)
             ->get();
-        foreach($sections as $section) {
+        foreach ($sections as $section) {
             $section->beginDate = date('l', strtotime($section->beginDate));
         }
 
@@ -64,7 +64,7 @@ class TeacherAttendanceController extends Controller
             ->where('sectionID', $sectionID)
             ->get();
 
-        foreach($students as $student) {
+        foreach ($students as $student) {
             $id = $student->id;
             $status = Attendance::select('status')
                 ->where('section_student_id', $id)
@@ -86,8 +86,7 @@ class TeacherAttendanceController extends Controller
         $statuses = $request->statuses;
         $sectionID = $request->sectionID;
 
-        foreach ($statuses as $studentID => $status)
-        {
+        foreach ($statuses as $studentID => $status) {
             $id = Section_Student::select('id')
                 ->where('sectionID', $sectionID)
                 ->where('studentID', $studentID)

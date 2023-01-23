@@ -21,6 +21,7 @@ use Yajra\DataTables\Facades\DataTables;
 class ManageStudentController extends Controller
 {
     private $model;
+
     public function __construct()
     {
         $this->model = new Student();
@@ -57,8 +58,7 @@ class ManageStudentController extends Controller
                     $faculty = $request->get('faculty') ?? "";
                     $strCourse = substr($course, -2, 2);
                     $instance->where("studentID", "LIKE", "$strCourse%");
-                    if ($faculty !== '')
-                    {
+                    if ($faculty !== '') {
                         $instance->where("facultyName", "=", (string) $faculty);
                     }
                 })
@@ -71,8 +71,7 @@ class ManageStudentController extends Controller
         try {
             Excel::import(new StudentsImport, $request->file);
             return 1;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
         }
     }
 

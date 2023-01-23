@@ -22,13 +22,13 @@ class AttendanceController extends Controller
     {
 //        $subjectID = $request->subjectID;
         $subjectID = 'LTPHP1';
-        $section = Section::select(['sectionID','beginDate', 'shift', 'teacherID'])
+        $section = Section::select(['sectionID', 'beginDate', 'shift', 'teacherID'])
             ->where('subjectID', $subjectID)
             ->orderBy('beginDate')
             ->orderBy('shift')
             ->get();
-        foreach($section as $key => $value) {
-            $value ->beginDate = date('l', strtotime($value->beginDate));
+        foreach ($section as $key => $value) {
+            $value->beginDate = date('l', strtotime($value->beginDate));
         }
         return response()->json($section);
     }

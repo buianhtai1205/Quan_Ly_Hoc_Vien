@@ -16,6 +16,7 @@ class ManageSectionController extends Controller
 {
 
     private $model;
+
     public function __construct()
     {
         $this->model = new Section();

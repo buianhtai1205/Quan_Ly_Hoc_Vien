@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\View;
 class SubjectController extends Controller
 {
     private $model;
+
     public function __construct()
     {
         $this->model = new Subject();

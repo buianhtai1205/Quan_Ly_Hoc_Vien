@@ -20,6 +20,7 @@ use Yajra\DataTables\Facades\DataTables;
 class AcademicController extends Controller
 {
     private $model;
+
     public function __construct()
     {
         $this->model = new Academic();
@@ -29,6 +30,7 @@ class AcademicController extends Controller
         $title = implode(' / ', $arr);
         View::share('title', $title);
     }
+
     public function index()
     {
         return view('admin.academic.index');
@@ -72,7 +74,6 @@ class AcademicController extends Controller
 
         return redirect()->route('admin.academics.index')->with('success', 'Inserted successful!');
     }
-
 
 
     public function show(Academic $academic)

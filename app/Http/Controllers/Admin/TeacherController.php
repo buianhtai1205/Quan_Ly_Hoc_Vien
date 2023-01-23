@@ -17,6 +17,7 @@ use Yajra\DataTables\Facades\DataTables;
 class TeacherController extends Controller
 {
     private $model;
+
     public function __construct()
     {
         $this->model = new Teacher();
@@ -26,6 +27,7 @@ class TeacherController extends Controller
         $title = implode(' / ', $arr);
         View::share('title', $title);
     }
+
     public function index()
     {
         return view('admin.teacher.index');

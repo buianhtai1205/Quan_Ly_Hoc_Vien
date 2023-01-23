@@ -18,6 +18,7 @@ use Yajra\DataTables\Facades\DataTables;
 class ManageTeacherController extends Controller
 {
     private $model;
+
     public function __construct()
     {
         $this->model = new Teacher();
@@ -27,6 +28,7 @@ class ManageTeacherController extends Controller
         $title = implode(' / ', $arr);
         View::share('title', $title);
     }
+
     public function index()
     {
         return view('user.academic.manage_teacher.index');
@@ -49,8 +51,7 @@ class ManageTeacherController extends Controller
         try {
             Excel::import(new TeachersImport, $request->file);
             return 1;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
         }
     }
 

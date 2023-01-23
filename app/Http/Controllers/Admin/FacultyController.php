@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\View;
 class FacultyController extends Controller
 {
     private $model;
+
     public function __construct()
     {
         $this->model = new Faculty();

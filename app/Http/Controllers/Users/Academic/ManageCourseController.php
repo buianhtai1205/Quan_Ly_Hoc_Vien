@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\View;
 class ManageCourseController extends Controller
 {
     private $model;
+
     public function __construct()
     {
         $this->model = new Course();
